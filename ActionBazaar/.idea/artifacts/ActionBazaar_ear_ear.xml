@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="ear" name="ActionBazaar-ear:ear">
+    <output-path>$PROJECT_DIR$/ActionBazaar-ear/target</output-path>
+    <root id="archive" name="ActionBazaar-ear.ear">
+      <element id="artifact" artifact-name="ActionBazaar-ear:ear exploded" />
+    </root>
+  </artifact>
+</component>

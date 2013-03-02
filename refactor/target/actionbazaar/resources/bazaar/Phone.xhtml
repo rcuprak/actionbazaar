@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:composite="http://java.sun.com/jsf/composite">
+<body>
+<composite:interface componentType="ui-component">
+    <composite:attribute name="value" type="com.actionbazaar.web.PhoneNumber" />
+    <composite:attribute name="required" type="java.lang.Boolean" />
+    <composite:attribute name="requiredMessage" type="java.lang.String" />
+</composite:interface>
+<composite:implementation>
+    <h:outputScript library="script" name="CommonUtilities.js"/>
+    <table border="0">
+        <tr>
+            <td>
+                <p:inputText maxlength="3" size="3" style="margin-right: 10px;"
+                             id="areaCode" value="#{cc.attrs.prefix}" onkeypress="return numberKeyPressHandler(event);"/>
+            </td>
+            <td>
+                <p:inputText maxlength="3" size="3" style="margin-right: 10px;"
+                             id="prefix" value="#{cc.attrs.areaCode}" onkeypress="return numberKeyPressHandler(event);"/>
+            </td>
+            <td>
+                <p:inputText maxlength="4" size="4" style="margin-right: 10px;"
+                              id="lineNumber" value="#{cc.attrs.lineNumber}" onkeypress="return numberKeyPressHandler(event);"/>
+            </td>
+            <td>
+                <p:message for="lineNumber" display="icon" />
+            </td>
+        </tr>
+    </table>
+</composite:implementation>
+</body>
+</html>
+

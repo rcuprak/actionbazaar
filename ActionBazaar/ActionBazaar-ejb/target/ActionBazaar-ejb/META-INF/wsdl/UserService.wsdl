@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+        xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="http://com.actionbazaar/user" xmlns="http://schemas.xmlsoap.org/wsdl/"
+        targetNamespace="http://com.actionbazaar/user"
+        name="UserService" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <types>
+        <xsd:schema>
+            <xsd:import namespace="http://com.actionbazaar/user" schemaLocation="UserDTO.xsd"/>
+        </xsd:schema>
+    </types>
+
+    <message name="createUserRequest">
+        <part name="user" element="tns:user"/>
+    </message>
+    <message name="createUserResponse">
+        <part name="response" element="tns:createUserResponse"/>
+    </message>
+    <portType name="CreateUser">
+        <operation name="createUser">
+            <input message="tns:createUserRequest"/>
+            <output message="tns:createUserResponse"/>
+        </operation>
+    </portType>
+    <binding name="UserPortBinding" type="tns:CreateUser">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <operation name="createUser">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="UserService">
+        <port name="UserPort" binding="tns:UserPortBinding">
+            <soap:address location="http://localhost:8080/UserService/CreateUser"/>
+        </port>
+    </service>
+</definitions>

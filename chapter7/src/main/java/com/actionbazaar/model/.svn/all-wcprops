@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/57/trunk/chapter7/src/main/java/com/actionbazaar/model
+END
+OrderStatus.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/57/trunk/chapter7/src/main/java/com/actionbazaar/model/OrderStatus.java
+END
+Billing.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/57/trunk/chapter7/src/main/java/com/actionbazaar/model/Billing.java
+END
+Shipping.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/57/trunk/chapter7/src/main/java/com/actionbazaar/model/Shipping.java
+END
+CreditCard.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/57/trunk/chapter7/src/main/java/com/actionbazaar/model/CreditCard.java
+END
+CreditCardType.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/57/trunk/chapter7/src/main/java/com/actionbazaar/model/CreditCardType.java
+END
+Email.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/57/trunk/chapter7/src/main/java/com/actionbazaar/model/Email.java
+END
+Order.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/57/trunk/chapter7/src/main/java/com/actionbazaar/model/Order.java
+END
+Category.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/57/trunk/chapter7/src/main/java/com/actionbazaar/model/Category.java
+END
+Bid.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/57/trunk/chapter7/src/main/java/com/actionbazaar/model/Bid.java
+END
+Item.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/57/trunk/chapter7/src/main/java/com/actionbazaar/model/Item.java
+END

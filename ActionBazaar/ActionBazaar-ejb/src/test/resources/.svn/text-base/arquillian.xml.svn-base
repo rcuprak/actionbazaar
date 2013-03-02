@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<arquillian xmlns="http://www.jboss.org/arquillian-1.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.jboss.org/arquillian-1.0
+        http://jboss.org/schema/arquillian/arquillian-1.0.xsd">
+    <engine>
+        <property name="deploymentExportPath">target/</property>
+    </engine>
+    <container qualifier="glassfish" default="true">
+       <configuration>
+            <property name="configurationXml">
+                file:///Users/rcuprak/Projects/ActionBazaar/ActionBazaar/ActionBazaar-ejb/src/test/resources/domain.xml
+            </property>
+        </configuration>
+    </container>
+</arquillian>
+

@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/15/trunk/chapter2/src/test/java/com/actionbazaar/buslogic
+END
+ItemServiceTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/15/trunk/chapter2/src/test/java/com/actionbazaar/buslogic/ItemServiceTest.java
+END
+UserServiceTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/15/trunk/chapter2/src/test/java/com/actionbazaar/buslogic/UserServiceTest.java
+END
+OrderProcessorTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/15/trunk/chapter2/src/test/java/com/actionbazaar/buslogic/OrderProcessorTest.java
+END

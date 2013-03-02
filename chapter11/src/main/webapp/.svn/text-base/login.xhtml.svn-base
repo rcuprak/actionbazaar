@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+        <h:outputStylesheet library="css" name="login.css"/>
+        <title>${msgs.title}</title>
+    </h:head>
+    <h:body styleClass="background">
+        <h:graphicImage library="images" name="logo2.png"/><br/>
+        <div class="line"/>
+        <div id="box" class="innerBox">
+            <form method="POST" action="j_security_check">  
+                <div class="titlebox">
+                    Authentication
+                </div>
+                <label>#{msgs.username}</label>
+                <input type="text" name="j_username"/><br/>
+                <label>#{msgs.password}</label>
+                <input type="password" name="j_password"/><br/>
+                <button class="submitButton" type="submit" name="Login" value="Login" title="Login">#{msgs.login}</button>
+            </form>
+        </div>
+    </h:body>
+</html>

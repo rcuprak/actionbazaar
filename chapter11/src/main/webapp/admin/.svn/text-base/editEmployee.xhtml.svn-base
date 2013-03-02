@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<HTML
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Edit Employee</title>
+    </h:head>
+    <h:body>
+        <h:form id="accountForm">
+            <h:panelGrid columns="2">
+                <h:outputLabel for="username" value="Username"/>
+                <h:inputText id="username" value="#{bidder.username}" maxlength="50" required="true"/>
+
+                <h:outputLabel for="email" value="Email"/>
+                <h:inputText id="email" value="#{bidder.firstName}" maxlength="50"/>
+            </h:panelGrid>
+        </h:form>
+</h:body>
+</HTML>

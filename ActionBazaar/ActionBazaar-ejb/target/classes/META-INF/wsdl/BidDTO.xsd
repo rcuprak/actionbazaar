@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+    version="1.0"
+    targetNamespace="http://com.actionbazaar/bid"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:tns="http://com.actionbazaar/bid"
+    elementFormDefault="qualified">
+    <xs:element name="bid" type="tns:BidDTO"/>
+    <xs:element name="bidResponse" type="tns:BidResponse"/>
+    <xs:complexType name="BidDTO">
+        <xs:sequence>
+            <xs:element id="bidPrice" name="bidPrice" type="xs:double" minOccurs="1"
+                        maxOccurs="1" nillable="false"/>
+            <xs:element id="itemId" name="itemId" type="xs:long" maxOccurs="1" nillable="false"/>
+            <xs:element id="bidderId" name="bidderId" type="xs:long" nillable="false"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="BidResponse">
+        <xs:sequence>
+            <xs:element name="accepted" type="xs:boolean"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
+
+

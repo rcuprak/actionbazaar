@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+    <title>#{msg.securityCode_title}</title>
+</h:head>
+<h:body>
+    <!--
+        This is a pop-up window display information on the different credit cards
+    -->
+    <h2>#{msg.securityCode_title}</h2>
+    <h3>#{msg.visaMasterCard}</h3>
+    <p>
+        #{msg.securityCode_masterVisaInstructions}
+
+     </p>
+    <img alt="Master Card Example 1" src="card1.png"/>
+    <img alt="Master Card Example 2" src="card2.png"/>
+    <h3>#{msg.securityCode_AmericanExpress}</h3>
+    <p>
+       #{msg.securityCode_AmericanExpressInfo}
+    </p>
+    <img alt="American Express Card" src="card3.png"/>
+    <h3>#{msg.securityCode_DiscoverCard}</h3>
+    <p>
+        #{msg.securityCode_DiscoverCardInstructions}
+    </p>
+</h:body>
+</html>

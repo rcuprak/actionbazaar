@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a="http://java.sun.com/jsf/composite/bazaar"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>#{msg.step2_title}</title>
+
+    </h:head>
+    <h:body>
+        <ui:composition template="/template.xhtml">
+            <ui:define name="content">
+                <h:outputScript library="script" name="CommonUtilities.js"/>
+                <h:form>
+                    <div class="content">
+                        <div style="border: 1px solid black;">
+                            <div class="header">
+                                #{msg.step2_title}
+                            </div>
+                            <div style="margin: 5px;">
+                                <p:messages autoUpdate="true"/>
+                                <!-- Name Information -->
+                                <div style="width: 425px;">
+                                    <div>
+                                        <h:outputLabel style="display: inline-block; width: 200px" for="firstName">#{msg.step2_firstName}</h:outputLabel>
+                                        <h:outputLabel style="display: inline-block; width: 200px" for="lastName">#{msg.step2_lastName}</h:outputLabel>
+                                    </div>
+                                    <div>
+                                        <table border="0">
+                                            <tr>
+                                                <td>
+                                                    <p:inputText style="width: 175px; margin-right: 10px;" id="firstName"
+                                                                 requiredMessage="#{msg.step2_firstNameRequired}"
+                                                                 required="true" value="#{bidderAccountController.firstName}"/>
+                                                </td>
+                                                <td><p:message for="firstName" display="icon" /></td>
+                                                <td>
+                                                    <p:inputText style="width: 190px;" id="lastName" required="true"
+                                                                 requiredMessage="#{msg.step2_lastNameRequired}"
+                                                                 value="#{bidderAccountController.lastName}"/>
+                                                </td>
+                                                <td><p:message for="lastName" display="icon" /></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h:outputLabel for="street">#{msg.step2_street}</h:outputLabel><br/>
+                                    <table border="0">
+                                        <tr>
+                                            <td>
+                                                <p:inputText style="width: 380px;" id="street" size="40"
+                                                             requiredMessage="#{msg.step2_streetRequired}"
+                                                             required="true" value="#{bidderAccountController.address.streetName1}"/>
+                                            </td>
+                                            <td>
+                                                <p:message for="street" display="icon" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div>
+                                    <h:outputLabel style="display: inline-block; width: 200px" for="city">#{msg.step2_city}</h:outputLabel>
+                                    <h:outputLabel style="display: inline-block; width: 100px" for="state">#{msg.step2_state}</h:outputLabel>
+                                    <h:outputLabel for="zipCode">#{msg.step2_zipCode}</h:outputLabel><br/>
+                                    <table border="0">
+                                        <tr>
+                                            <td>
+                                                <p:inputText style="width: 190px; margin-right: 10px;" id="city" size="30"
+                                                             required="true" requiredMessage="#{msg.step2_cityRequired}"
+                                                             value="#{bidderAccountController.address.city}"/>
+                                            </td>
+                                            <td>
+                                                <p:message for="city" display="icon" />
+                                            </td>
+                                            <td>
+                                                <h:selectOneMenu style="width: 75px; margin-right: 25px;" id="state" required="true"
+                                                                 requiredMessage="#{msg.stateRequired}"
+                                                                 value="#{bidderAccountController.address.state}">
+                                                    <f:selectItems value="#{bidderAccountController.states}"/>
+                                                </h:selectOneMenu>
+                                            </td>
+                                            <td>
+                                                <p:message for="state" display="icon" />
+                                            </td>
+                                            <td>
+                                                <p:inputText style="width: 75px;" id="zipCode"
+                                                             requiredMessage="#{msg.zipCodeRequired}"
+                                                             value="#{bidderAccountController.address.zipCode}"/><br/>
+                                            </td>
+                                            <td>
+                                                <p:message for="zipCode" display="icon" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div>
+                                    <h:outputLabel style="display: inline-block; width: 200px" for="phoneNumber">#{msg.step_phone}</h:outputLabel><br/>
+                                    <a:Phone id="phoneNumber" value="#{bidderAccountController.phoneNumber}" required="true" requiredMessage="#{msg.step2_phoneRequired}"/>
+                                </div>
+                                <div style="width: 400px; text-align: right;">
+                                    <p:commandButton value="#{msg.cancel}" ajax="false" async="false"  action="#{bidderAccountController.cancel}"/>
+                                    <p:commandButton value="#{msg.next}" ajax="false" async="false"  action="#{bidderAccountController.processSecondStep}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </h:form>   
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

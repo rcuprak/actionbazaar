@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
+              version="2.0">
+    <application>
+        <resource-bundle>
+            <base-name>com.actionbazaar.messages</base-name>
+            <var>msg</var>
+        </resource-bundle>
+    </application>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>home</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>mybazaar</from-outcome>
+            <to-view-id>/mybazaar.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>sell</from-outcome>
+            <to-view-id>/sell.xhtml</to-view-id>
+        </navigation-case>
+
+        <navigation-case>
+            <from-outcome>document</from-outcome>
+            <to-view-id>/document.xhtml</to-view-id>
+        </navigation-case>
+
+        <navigation-case>
+            <from-outcome>account</from-outcome>
+            <to-view-id>/account.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>create_account</from-outcome>
+            <to-view-id>/account/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+</faces-config>

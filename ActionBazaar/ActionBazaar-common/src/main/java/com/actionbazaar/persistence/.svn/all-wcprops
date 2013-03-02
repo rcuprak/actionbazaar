@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/47/trunk/ActionBazaar/ActionBazaar-common/src/main/java/com/actionbazaar/persistence
+END
+OrderStatus.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/!svn/ver/47/trunk/ActionBazaar/ActionBazaar-common/src/main/java/com/actionbazaar/persistence/OrderStatus.java
+END
+Billing.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/!svn/ver/47/trunk/ActionBazaar/ActionBazaar-common/src/main/java/com/actionbazaar/persistence/Billing.java
+END
+Shipping.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/!svn/ver/47/trunk/ActionBazaar/ActionBazaar-common/src/main/java/com/actionbazaar/persistence/Shipping.java
+END
+CreditCard.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/!svn/ver/47/trunk/ActionBazaar/ActionBazaar-common/src/main/java/com/actionbazaar/persistence/CreditCard.java
+END
+CreditCardType.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/!svn/ver/47/trunk/ActionBazaar/ActionBazaar-common/src/main/java/com/actionbazaar/persistence/CreditCardType.java
+END
+Notification.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/!svn/ver/47/trunk/ActionBazaar/ActionBazaar-common/src/main/java/com/actionbazaar/persistence/Notification.java
+END
+Email.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/!svn/ver/47/trunk/ActionBazaar/ActionBazaar-common/src/main/java/com/actionbazaar/persistence/Email.java
+END
+Order.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/!svn/ver/47/trunk/ActionBazaar/ActionBazaar-common/src/main/java/com/actionbazaar/persistence/Order.java
+END
+Category.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/!svn/ver/47/trunk/ActionBazaar/ActionBazaar-common/src/main/java/com/actionbazaar/persistence/Category.java
+END
+CategoryNotifier.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/!svn/ver/47/trunk/ActionBazaar/ActionBazaar-common/src/main/java/com/actionbazaar/persistence/CategoryNotifier.java
+END
+Bid.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/!svn/ver/47/trunk/ActionBazaar/ActionBazaar-common/src/main/java/com/actionbazaar/persistence/Bid.java
+END
+Item.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/!svn/ver/47/trunk/ActionBazaar/ActionBazaar-common/src/main/java/com/actionbazaar/persistence/Item.java
+END

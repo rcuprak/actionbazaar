@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>#{msg.step3_title}</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/template.xhtml">
+            <ui:define name="content">
+                <h:form>
+                    <div class="content">
+                        <h:outputScript library="script" name="CommonUtilities.js"/>
+                        <div style="border: 1px solid black;">
+                            <div class="header">
+                                #{msg.step3_title}
+                            </div>
+                            <p:messages id="message" autoUpdate="true"/>
+                            <div style="margin: 5px;">
+                                <table border="0">
+                                    <tr>
+                                        <td><h:graphicImage library="images" name="master_card.png"/></td>
+                                        <td><h:graphicImage library="images" name="visa.png"/></td>
+                                        <td><h:graphicImage library="images" name="amex.png"/></td>
+                                        <td><h:graphicImage library="images" name="discover.png"/></td>
+                                        <td><h:graphicImage library="images" name="paypal.png"/></td>
+                                    </tr>
+                                    <tr>
+
+                                        <td style="text-align: center;"><input checked="checked" name="card" type="radio" value="MASTERCARD"/></td>
+                                        <td style="text-align: center;"><input name="card" type="radio" value="VISA"/></td>
+                                        <td style="text-align: center;"><input name="card" type="radio" value="AMEX"/></td>
+                                        <td style="text-align: center;"><input name="card" type="radio" value="DISCOVER"/></td>
+                                    </tr>
+                                </table>
+                                <h:outputLabel id="accountNameLabel" for="accountName">#{msg.step3_nameOnCard}</h:outputLabel><br/>
+                                <p:inputText id="accountName"
+                                    required="true" requiredMessage="#{msg.step3_nameOnCardRequired}"
+                                    value="#{bidderAccountController.creditCard.nameOnCard}"/><br/>
+
+                                <h:outputLabel for="accountNumber">#{msg.step3_creditCardNumber}</h:outputLabel><br/>
+                                <p:inputText id="accountNumber"
+                                             required="true" requiredMessage="#{msg.step3_accountNumberRequired}"
+                                             value="#{bidderAccountController.creditCard.accountNumber}"/><br/>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <h:outputLabel id="accountExpirationMonthLabel"
+                                                for="accountExpirationMonth">#{msg.step3_accountExpiration}</h:outputLabel><br/>
+                                        </td>
+                                        <td>
+                                            <div style="margin-left: 20px;">
+                                                <h:outputLabel id="securityCodeLabel"
+                                                    for="securityCode">#{msg.step3_securityCodeLabel}</h:outputLabel><br/>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p:inputText id="accountExpirationMonth" size="2" maxlength="2"
+                                                required="true" requiredMessage="#{msg.step3_twoDigitExpirationMonth}"
+                                                onkeypress="return numberKeyPressHandler(event);" value="#{bidderAccountController.creditCard.expirationMonth}"/> /
+                                            <p:inputText id="accountExpirationYear"
+                                                required="true" requiredMessage="#{msg.step3_twoDigitExpirationYear}" size="4" maxlength="4"
+                                                onkeypress="return numberKeyPressHandler(event);"  value="#{bidderAccountController.creditCard.expirationYear}"/>
+                                        </td>
+                                        <td>
+                                            <p:inputText id="securityCode" style="margin-left: 20px;"
+                                                required="true" requiredMessage="#{msg.step3_securityCode}" size="4" maxlength="4"
+                                                onkeypress="return numberKeyPressHandler(event);"  value="#{bidderAccountController.creditCard.securityCode}"/>
+                                            <a href="JavaScript:newPopup('#{appContextInfo.applicationURL}/account/security.faces');">#{msg.step3_whatsThis}</a>
+                                        </td>
+
+                                    </tr>
+                                </table>
+                                <div style="width: 400px; text-align: right;">
+                                    <p:commandButton value="Cancel" ajax="false" async="false" action="#{bidderAccountController.cancel}"/>
+                                    <p:commandButton value="Finish"
+                                                     ajax="false" async="false"
+                                                     action="#{bidderAccountController.create}"/>
+                                </div>
+
+
+                                <p:confirmDialog message="#{msg.step3_confirmationEmail}"
+                                    header="#{msg.step3_confirmDialogTitle}" severity="alert" widgetVar="confirmation">
+                                    <p:commandButton value="#{msg.ok}" update="messages" oncomplete="confirmation.hide()"/>
+                                </p:confirmDialog>
+                                <script type="text/javascript" language="JavaScript">
+                                    /**
+                                     * Displays the pop-up window
+                                     * @param url - url for the window
+                                     */
+                                    function newPopup(url) {
+                                       popupWindow = window.open(
+                                        url,'popUpWindow','height=300,width=500,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=no,menubar=no,location=no,directories=no,status=no')
+                                    }
+
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </h:form>   
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

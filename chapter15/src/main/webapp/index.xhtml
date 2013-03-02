@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<HTML
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Welcome to Action Bazaar</title>
+    </h:head>
+    <h:body>
+        <h:form id="itemForm">
+            <div>
+                Hi! <h:outputText rendered="#{sessionBean.authenticated}" value="#{currentUser.username}"/>
+                <h:link rendered="#{!sessionBean.authenticated}" value="Sign in" outcome="login"/>
+                <h:commandLink rendered="#{sessionBean.authenticated}" 
+                               immediate="true" action="#{logoutController.logout()}">Log-out</h:commandLink>
+            </div>       
+            <h:dataTable value="#{landingController.newestItems}" var="itr">
+                <h:column>
+                    <h:commandLink action="#{itemController.startConversation(itr)}">#{itr.itemName}</h:commandLink> 
+                </h:column>
+            </h:dataTable>
+          
+            <h:button outcome="addItem" value="Add Item"/>
+        </h:form>
+    </h:body>
+</HTML>

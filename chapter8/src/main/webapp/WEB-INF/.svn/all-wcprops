@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/57/trunk/chapter8/src/main/webapp/WEB-INF
+END
+beans.xml
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/57/trunk/chapter8/src/main/webapp/WEB-INF/beans.xml
+END
+web.xml
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/57/trunk/chapter8/src/main/webapp/WEB-INF/web.xml
+END

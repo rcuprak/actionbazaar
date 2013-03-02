@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/15/trunk/chapter2/src/main/java/com/actionbazaar/buslogic
+END
+BidService.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/15/trunk/chapter2/src/main/java/com/actionbazaar/buslogic/BidService.java
+END
+BillingException.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/15/trunk/chapter2/src/main/java/com/actionbazaar/buslogic/BillingException.java
+END
+ItemService.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/15/trunk/chapter2/src/main/java/com/actionbazaar/buslogic/ItemService.java
+END
+UserService.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/15/trunk/chapter2/src/main/java/com/actionbazaar/buslogic/UserService.java
+END
+OrderProcessorBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/15/trunk/chapter2/src/main/java/com/actionbazaar/buslogic/OrderProcessorBean.java
+END
+BidServiceBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/15/trunk/chapter2/src/main/java/com/actionbazaar/buslogic/BidServiceBean.java
+END
+ItemServiceBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/15/trunk/chapter2/src/main/java/com/actionbazaar/buslogic/ItemServiceBean.java
+END
+UserServiceBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/15/trunk/chapter2/src/main/java/com/actionbazaar/buslogic/UserServiceBean.java
+END
+OrderProcessor.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/15/trunk/chapter2/src/main/java/com/actionbazaar/buslogic/OrderProcessor.java
+END

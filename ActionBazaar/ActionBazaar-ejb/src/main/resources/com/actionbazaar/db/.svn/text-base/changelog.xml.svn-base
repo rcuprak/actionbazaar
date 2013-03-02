@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+    <changeSet id="1" author="rcuprak">
+        <createTable tableName="BIDDERS">
+            <column name="username" type="varchar(10)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="first_name" type="varchar(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="credit_card_type" type="varchar(20)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <createTable tableName="BIDS">
+            <column name="BID_ID" type="number(19)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="BID_DATE" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="BID_STATUS" type="varchar(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="BID_PRICE" type="number(19,4)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="BID_ITEM_ID" type="number(19)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="BID_BIDDER" type="varchar(45)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

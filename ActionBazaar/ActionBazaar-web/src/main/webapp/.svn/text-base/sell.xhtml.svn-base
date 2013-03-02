@@ -1,0 +1,43 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>ActionBazaar</title>
+    <h:outputStylesheet library="css" name="site.css"/>
+</h:head>
+<h:body>
+    <ui:composition template="/template.xhtml">
+        <ui:define name="content">
+            <h:form>
+                <p:messages/>
+                <p:panel header="What do you want to sell today?">
+                    Enter a UPC, ISBN, or keywords that describe your item.<br/>
+                    <h:inputText value="#{sellController.keywords}" size="25"/>
+                    <p:commandButton value="Search" actionListener="#{sellController.performCategorySearch}" update="tabView:searchCategories"/><br/>
+                    For example: New Toy Story DVD
+                </p:panel>
+                <p:tabView id="tabView">
+                    <p:tab id="tab1" title="Search Categories">
+                        <p:pickList id="searchCategories" value="#{sellController.searchCategories}"
+                                    var="category"
+                                    itemLabel="#{category.categoryName}"
+                                    itemValue="#{category.categoryId}"/>
+                    </p:tab>
+                    <p:tab id="tab2" title="Categories">
+                        <p:tree value="#{sellController.categories}" var="node" id="checkboxTree"
+                                selectionMode="checkbox"
+                                selection="#{sellController.categorySelection}">
+                            <p:treeNode>
+                                <h:outputText value="#{node.categoryName}" />
+                            </p:treeNode>
+                        </p:tree>
+                    </p:tab>
+                </p:tabView>
+                <p:commandButton ajax="false" action="#{sellController.performContinue}" value="Continue"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

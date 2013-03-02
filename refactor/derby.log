@@ -1,0 +1,8 @@
+----------------------------------------------------------------
+2012-02-09 04:28:02.140 GMT:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.6.2.1 - (999685): instance a816c00e-0135-605e-38a1-00001d148b30 
+on database directory /private/var/folders/7t/g3k9cwhd31b47wqmwb_cljp80000gn/T/gfembed1944621459995721526tmp/lib/databases/ejbtimer  with class loader sun.misc.Launcher$AppClassLoader@37b90b39 
+Loaded from file:/Users/rcuprak/.m2/repository/org/glassfish/extras/glassfish-embedded-all/3.1/glassfish-embedded-all-3.1.jar
+java.vendor=Apple Inc.
+java.runtime.version=1.6.0_29-b11-402-11M3527
+Database Class Loader started - derby.database.classpath=''

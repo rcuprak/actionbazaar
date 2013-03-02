@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/57/trunk/chapter4/src/main/webapp
+END
+index.xhtml
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/57/trunk/chapter4/src/main/webapp/index.xhtml
+END
+login.xhtml
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/57/trunk/chapter4/src/main/webapp/login.xhtml
+END
+template.xhtml
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/57/trunk/chapter4/src/main/webapp/template.xhtml
+END
+login_error.xhtml
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/57/trunk/chapter4/src/main/webapp/login_error.xhtml
+END

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+        xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="http://com.actionbazaar/bid" xmlns="http://schemas.xmlsoap.org/wsdl/"
+        targetNamespace="http://com.actionbazaar/bid"
+        name="CreditService" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <types>
+        <xsd:schema>
+            <xsd:import namespace="http://com.actionbazaar/bid" schemaLocation="BidDTO.xsd"/>
+        </xsd:schema>
+    </types>
+    <service name="BidService">
+        <port name="BidPort" binding="tns:BidPortBinding">
+            <soap:address location="http://localhost:8080/BidService/MakeBid"/>
+        </port>
+    </service>
+    <message name="bidRequest">
+        <part name="bid" element="tns:bid"/>
+    </message>
+    <message name="bidResponse">
+        <part name="response" element="tns:bidResponse"/>
+    </message>
+    <portType name="MakeBid">
+        <operation name="placeBid">
+            <input message="tns:bidRequest"/>
+            <output message="tns:bidResponse"/>
+        </operation>
+    </portType>
+    <binding name="BidPortBinding" type="tns:MakeBid">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <operation name="placeBid">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+</definitions>
+
+
+

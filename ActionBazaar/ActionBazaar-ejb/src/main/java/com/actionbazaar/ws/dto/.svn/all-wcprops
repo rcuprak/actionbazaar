@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/57/trunk/ActionBazaar/ActionBazaar-ejb/src/main/java/com/actionbazaar/ws/dto
+END
+CreateUserResponse.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/!svn/ver/57/trunk/ActionBazaar/ActionBazaar-ejb/src/main/java/com/actionbazaar/ws/dto/CreateUserResponse.java
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/!svn/ver/57/trunk/ActionBazaar/ActionBazaar-ejb/src/main/java/com/actionbazaar/ws/dto/package-info.java
+END
+BidDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/57/trunk/ActionBazaar/ActionBazaar-ejb/src/main/java/com/actionbazaar/ws/dto/BidDTO.java
+END
+UserDTO.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/!svn/ver/57/trunk/ActionBazaar/ActionBazaar-ejb/src/main/java/com/actionbazaar/ws/dto/UserDTO.java
+END
+BidResponse.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/!svn/ver/57/trunk/ActionBazaar/ActionBazaar-ejb/src/main/java/com/actionbazaar/ws/dto/BidResponse.java
+END
+ObjectFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/!svn/ver/57/trunk/ActionBazaar/ActionBazaar-ejb/src/main/java/com/actionbazaar/ws/dto/ObjectFactory.java
+END

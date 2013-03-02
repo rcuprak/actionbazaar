@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.jboss.arquillian.protocol:arquillian-protocol-servlet:1.0.0.Alpha5">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/jboss/arquillian/protocol/arquillian-protocol-servlet/1.0.0.Alpha5/arquillian-protocol-servlet-1.0.0.Alpha5.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/jboss/arquillian/protocol/arquillian-protocol-servlet/1.0.0.Alpha5/arquillian-protocol-servlet-1.0.0.Alpha5-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/jboss/arquillian/protocol/arquillian-protocol-servlet/1.0.0.Alpha5/arquillian-protocol-servlet-1.0.0.Alpha5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<HTML
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Add </title>
+    </h:head>
+    <h:body>
+        <h:form>
+            Item Name: <h:inputText value="#{selectedItem.itemName}" size="25"/><br/>
+            Start price: <h:inputText value="#{selectedItem.initialPrice}" size="4"/><br/>
+            <h:commandButton value="List" action="#{itemController.add}"/>
+        </h:form>
+    </h:body>
+</HTML>

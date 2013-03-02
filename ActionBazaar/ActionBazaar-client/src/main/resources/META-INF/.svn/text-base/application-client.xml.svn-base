@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application-client version="6" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/application-client_6.xsd">
+    <display-name>Skeleton-app-client</display-name>
+    <ejb-ref>
+        <ejb-ref-name>ejb/UserService</ejb-ref-name>
+        <ejb-ref-type>Session</ejb-ref-type>
+        <remote>com.actionbazaar.service.UserService</remote>
+    </ejb-ref>
+</application-client>

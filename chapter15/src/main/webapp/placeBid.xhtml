@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<HTML
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Confirm Bid</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            Confirm Item: #{selectedItem.itemName}<br/>
+            Amount: #{currentBid.bidPrice}<br/>
+            <h:commandButton value="Confirm Bid" action="#{bidController.confirmBid()}"/>
+        </h:form>
+    </h:body>
+</HTML>

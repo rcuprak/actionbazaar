@@ -1,0 +1,34 @@
+##
+# Validation messages - JSR 303 Beans Validation looks for this resource bundle
+# in the default package. Note, that we use the attribute name to retrieve the
+# value to be used in the message.
+##
+
+# STEP 1
+step1_emailSize=Email length must be between {min} and {max} characters.
+step1_invalidEmail=Invalid email format.
+step1_passwordSize=Password must be between {min} and {max} characters.
+step1_usernameSize=Username must be between {min} and {max} characters.
+
+# STEP 2
+step2_firstNameSize=First name must be between {min} and {max} characters.
+step2_lastNameSize=Last name must be between {min} and {max} characters.
+
+# STEP 3
+step3_twoDigitExpirationMonth=Credit card expiration month require.
+step3_twoDigitExpirationYear=Credit card expiration year required.
+step3_securityCode=Security code required with a length of 3-4 required.
+step3_accountNumberRequired=A valid account number is required.
+step3_invalidExpirationYear=Invalid expiration year.
+step3_nameOnCardRequired=Name on the card is required.
+step3_minimumMonthValue=Month must be greater than or equal to 1.
+step3_maximumMonthValue=There are only 12 months in the year.
+step3_minimumYearValue=Credit card expiration must be in the future.
+
+
+# ADDRESS Object values
+streetNameSize=Street name must be between {min} and {max} characters.
+citySize=City must be between {min} and {max} characters.
+zipCodeSize=Invalid zip code.
+
+CreditCardCheck=Invalid credit card number.

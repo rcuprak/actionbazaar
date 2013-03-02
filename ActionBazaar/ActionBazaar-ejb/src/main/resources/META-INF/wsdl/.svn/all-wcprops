@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/50/trunk/ActionBazaar/ActionBazaar-ejb/src/main/resources/META-INF/wsdl
+END
+BidDTO.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/50/trunk/ActionBazaar/ActionBazaar-ejb/src/main/resources/META-INF/wsdl/BidDTO.xsd
+END
+UserDTO.xsd
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/!svn/ver/50/trunk/ActionBazaar/ActionBazaar-ejb/src/main/resources/META-INF/wsdl/UserDTO.xsd
+END
+Bid.wsdl
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/50/trunk/ActionBazaar/ActionBazaar-ejb/src/main/resources/META-INF/wsdl/Bid.wsdl
+END
+UserService.wsdl
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/50/trunk/ActionBazaar/ActionBazaar-ejb/src/main/resources/META-INF/wsdl/UserService.wsdl
+END

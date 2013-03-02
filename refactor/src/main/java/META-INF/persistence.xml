@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+
+    <persistence-unit name="NewPersistenceUnit">
+        <provider>oracle.toplink.essentials.PersistenceProvider</provider>
+        <properties>
+            <property name="toplink.jdbc.url" value=""/>
+            <property name="toplink.jdbc.driver" value=""/>
+            <property name="toplink.jdbc.user" value=""/>
+            <property name="toplink.jdbc.password" value=""/>
+            <property name="toplink.logging.level" value="INFO"/>
+        </properties>
+    </persistence-unit>
+</persistence>

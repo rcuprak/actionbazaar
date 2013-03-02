@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>ActionBazaar</artifactId>
+        <groupId>com.actionbazaar.chapter3</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <groupId>com.actionbazaar.chapter3</groupId>
+    <artifactId>ActionBazaar-ear</artifactId>
+    <packaging>ear</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>Action Bazaar EAR</name>
+    <url>http://code.google.com/p/action-bazaar/</url>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ear-plugin</artifactId>
+                <configuration>
+                    <version>6</version>
+                    <generateClient>true</generateClient>
+                    <modules>
+                        <jarModule>
+                            <groupId>com.actionbazaar.chapter3</groupId>
+                            <artifactId>ActionBazaar-client</artifactId>
+                            <includeInApplicationXml>true</includeInApplicationXml>
+                        </jarModule>
+                    </modules>
+                </configuration>
+            </plugin>
+        </plugins>
+        <finalName>ActionBazaar-ear</finalName>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>com.actionbazaar.chapter3</groupId>
+            <artifactId>ActionBazaar-ejb</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>ejb</type>
+        </dependency>
+        <dependency>
+            <groupId>com.actionbazaar.chapter3</groupId>
+            <artifactId>ActionBazaar-web</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>com.actionbazaar.chapter3</groupId>
+            <artifactId>ActionBazaar-client</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>jar</type>
+        </dependency>
+    </dependencies>
+    <properties>
+        <netbeans.hint.deploy.server>gfv3ee6</netbeans.hint.deploy.server>
+    </properties>
+</project>
