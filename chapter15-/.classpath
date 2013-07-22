@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="chapter15-ejb-arquillian-test/src/test/java"/>
+	<classpathentry kind="src" path="chapter15-ejb-embedded-test/src/test/java"/>
+	<classpathentry kind="src" path="chapter15-ejb/src/main/java"/>
+	<classpathentry kind="src" path="chapter15-ejb/src/test/java"/>
+	<classpathentry kind="lib" path="chapter15-ejb-arquillian-test/target/surefire/surefirebooter6727273912765482165.jar"/>
+	<classpathentry kind="lib" path="chapter15-ejb-embedded-test/target/chapter15-ejb-embedded-test-1.0.jar"/>
+	<classpathentry kind="lib" path="chapter15-ejb-embedded-test/target/surefire/surefirebooter853070827409005823.jar"/>
+	<classpathentry kind="lib" path="chapter15-ejb/target/chapter15-ejb-1.0.jar"/>
+	<classpathentry kind="lib" path="chapter15-ejb/target/endorsed/javaee-endorsed-api-7.0.jar"/>
+	<classpathentry kind="lib" path="chapter15-ejb/target/surefire/surefirebooter6549435431904070994.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="chapter15-ejb-embedded-test/target/test-classes"/>
+</classpath>

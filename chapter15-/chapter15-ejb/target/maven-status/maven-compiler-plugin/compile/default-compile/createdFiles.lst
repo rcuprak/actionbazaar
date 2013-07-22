@@ -1,0 +1,10 @@
+com\actionbazaar\ejb\MemberManager.class
+com\actionbazaar\ejb\MemberManagerBean.class
+com\actionbazaar\ejb\DiscountManagerBean$1.class
+com\actionbazaar\ejb\DiscountManagerBean.class
+com\actionbazaar\entity\MembershipLevelType.class
+com\actionbazaar\entity\MembershipLevel.class
+com\actionbazaar\ejb\MembershipLevelManagerBean.class
+com\actionbazaar\ejb\DiscountManager.class
+com\actionbazaar\ejb\MembershipLevelManager.class
+com\actionbazaar\entity\Member.class

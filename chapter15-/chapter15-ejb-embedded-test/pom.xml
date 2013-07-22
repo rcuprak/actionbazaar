@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.actionbazaar</groupId>
+    <artifactId>chapter15</artifactId>
+    <version>1.0</version>
+  </parent>
+  
+  <groupId>com.actionbazaar</groupId>
+  <artifactId>chapter15-ejb-embedded-test</artifactId>
+  <version>1.0</version>
+  <name>chapter15-ejb-embedded-test</name>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <chapter15-ejb.version>1.0</chapter15-ejb.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.actionbazaar</groupId>
+      <artifactId>chapter15-ejb</artifactId>
+      <version>${chapter15-ejb.version}</version>
+      <scope>test</scope>				
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.10</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.extras</groupId>
+      <artifactId>glassfish-embedded-all</artifactId>
+      <version>3.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+<build>
+  <plugins>
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-surefire-plugin</artifactId>
+      <version>2.10</version>
+      <configuration>
+        <systemProperties>
+          <property>
+            <name>moduleName</name>
+            <value>chapter15-ejb-${chapter15-ejb.version}</value>
+          </property>
+        </systemProperties>
+      </configuration>
+    </plugin>
+  </plugins>
+</build>
+</project>
