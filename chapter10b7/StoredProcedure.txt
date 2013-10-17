@@ -1,0 +1,8 @@
+CREATE FUNCTION getQtyOrders(userId int) RETURNS int AS $$
+DECLARE
+    qty int;
+BEGIN
+    SELECT COUNT(*) INTO qty FROM BID WHERE bazaaraccount_user_id = userId;
+    RETURN qty;
+END;
+$$ LANGUAGE plpgsql;

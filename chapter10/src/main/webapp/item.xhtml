@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<HTML
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>View item</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            Item Name: #{selectedItem.itemName}<br/>
+            Bid: <h:inputText value="#{currentBid.bidPrice}" size="5"/><br/>
+            <h:commandButton value="Bid" action="#{bidController.placeOrder()}"/>
+        </h:form>
+    </h:body>
+</HTML>

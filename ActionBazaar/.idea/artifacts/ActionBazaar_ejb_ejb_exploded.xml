@@ -1,9 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="exploded-ejb" build-on-make="true" name="ActionBazaar-ejb:ejb exploded">
-    <output-path>$PROJECT_DIR$/ActionBazaar-ejb/target/ActionBazaar-ejb</output-path>
-    <root id="root">
-      <element id="javaee-facet-resources" facet="ActionBazaar-ejb/ejb/EJB" />
-      <element id="module-output" name="ActionBazaar-ejb" />
-    </root>
-  </artifact>
-</component>
