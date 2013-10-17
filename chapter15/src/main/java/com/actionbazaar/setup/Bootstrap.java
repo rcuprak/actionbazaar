@@ -17,14 +17,6 @@
  */
 package com.actionbazaar.setup;
 
-import com.actionbazaar.account.Employee;
-import com.actionbazaar.account.UserService;
-import com.actionbazaar.buslogic.ItemManager;
-import com.actionbazaar.model.Category;
-import com.actionbazaar.model.Item;
-import java.math.BigDecimal;
-import java.util.Date;
-import java.util.List;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;

@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!-- =========== FULL CONFIGURATION FILE ================================== -->
+
+<faces-config version="2.1"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd">
+
+    <application>
+        <resource-bundle>
+            <base-name>com.actionbazaar.resources.messages</base-name>
+            <var>msgs</var>
+        </resource-bundle>
+    </application>
+    
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>mybazaar</from-outcome>
+            <to-view-id>/mybazaar.xhtml</to-view-id>
+        </navigation-case>
+     
+        <navigation-case>
+            <from-outcome>sell</from-outcome>
+            <to-view-id>/sell.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>account</from-outcome>
+            <to-view-id>/account.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>create_account</from-outcome>
+            <to-view-id>/account/index.xhtml</to-view-id>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>addItem</from-outcome> 
+            <to-view-id>/addItem.faces</to-view-id> 
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>login</from-outcome> 
+            <to-view-id>/login.faces</to-view-id> 
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>item</from-outcome> 
+            <to-view-id>/item.faces</to-view-id> 
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>placeBid</from-outcome> 
+            <to-view-id>/placeBid.faces</to-view-id> 
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>home</from-outcome> 
+            <redirect/>
+            <to-view-id>/index.faces</to-view-id> 
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>support</from-outcome> 
+            <redirect/>
+            <to-view-id>/chat.faces</to-view-id> 
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>admin-chat</from-outcome> 
+            <redirect/>
+            <to-view-id>/admin/support.faces</to-view-id> 
+        </navigation-case>
+    </navigation-rule>
+
+</faces-config>

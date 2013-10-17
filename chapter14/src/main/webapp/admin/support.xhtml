@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Custom Service Chat</title>
+    </h:head>
+    <h:body>
+        <h:form>
+        <h:outputScript library="js" name="jquery-1.10.2.js" />
+        <script>
+            var webSocket = null;
+            var wsUri = "ws://" + document.location.host + '/chapter14/' + "support";
+            
+            function onOpen(evt) {
+                console.log("web socket open");
+            }
+            
+            function onClose(evt) {
+                console.log("web socket close");
+            }
+            
+            function onMessage(evt) {
+               
+                console.log("web socket message received: " + evt.data);
+                
+            }
+            
+            function onError(evt) {
+                console.log("web socket error!!")
+            }
+            
+            function postMessage() {
+                var message = $('#message').val();
+                $('#message').val('');
+                console.log("Sending message");
+                msg = webSocket.send(message);
+            }
+            
+            function closeWebSocket() {
+                webSocket.close();
+            }
+        
+        
+            $( document ).ready(function() {
+                console.log( "-> Page loaded, starting chat session.");
+                var btnSend = document.getElementById('btnSend');
+                var btnClose = document.getElementById('btnClose');
+                webSocket = new WebSocket(wsUri);
+                webSocket.onopen = function(evt) { onOpen(evt); };
+                webSocket.onclose = function(evt) { onClose(evt); };
+                webSocket.onmessage = function(evt) { onMessage(evt); };
+                webSocket.onerror = function(evt) { onError(evt); };
+            });
+        
+        
+
+        </script>
+        <div>Chat</div>
+        <textarea id="chatWindow" rows="20" cols="40">
+        </textarea>
+        <br/>
+        <input id="message" type="text" name="question"/>
+        <br/>
+        <button id="btnSend" type="button" onclick="postMessage();">Send</button>
+        <button id="btnClose" type="button">Cancel</button>
+        </h:form>
+    </h:body>
+</html>

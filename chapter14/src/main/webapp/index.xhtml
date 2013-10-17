@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<HTML
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <ui:composition template="/WEB-INF/template.xhtml">
+        <ui:define name="content">
+            <h:form id="mainForm">
+                <h:link class="float:right;" value="Support" outcome="support"/>
+                <h:dataTable style="width: 1000px; border-style:solid; border-width:1px;" 
+                             value="#{landingController.newestItems}" var="itr">
+                    <h:column>
+                        <!-- Item picture here -->
+                    </h:column>
+                    <h:column>
+                        <h:commandLink action="#{itemController.startConversation(itr)}">#{itr.itemName}</h:commandLink> 
+                    </h:column>
+                    <h:column>
+                        #{itr.bids.size()}
+                    </h:column>
+                </h:dataTable>
+                <h:button outcome="addItem" value="Add Item"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</HTML> 

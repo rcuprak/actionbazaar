@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>#{msg.securityCode_title}</title>
+</h:head>
+<h:body>
+    <!--
+        This is a pop-up window display information on the different credit cards
+    -->
+    <h2>#{msg.securityCode_title}</h2>
+    <h3>#{msg.visaMasterCard}</h3>
+    <p>
+        #{msg.securityCode_masterVisaInstructions}
+
+     </p>
+    <img alt="Master Card Example 1" src="card1.png"/>
+    <img alt="Master Card Example 2" src="card2.png"/>
+    <h3>#{msg.securityCode_AmericanExpress}</h3>
+    <p>
+       #{msg.securityCode_AmericanExpressInfo}
+    </p>
+    <img alt="American Express Card" src="card3.png"/>
+    <h3>#{msg.securityCode_DiscoverCard}</h3>
+    <p>
+        #{msg.securityCode_DiscoverCardInstructions}
+    </p>
+</h:body>
+</html>

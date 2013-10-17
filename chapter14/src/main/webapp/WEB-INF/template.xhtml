@@ -1,0 +1,35 @@
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<f:view contentType="text/html">
+    <h:head>
+        <title>Welcome to Action Bazaar!</title>
+        <h:outputStylesheet library="css" name="site.css"/>
+    </h:head>
+    <h:body>
+        <div class="content">
+            <h:graphicImage library="images" name="logo.png"/>
+            <span class="smallTxt">Welcome to Action Bazaar!</span>
+            <div class="actionBar">
+                <h:form>
+                    <h:link rendered="#{userDisplay.guest}" outcome="/account/index" style="margin-right: 5px;">Register</h:link>
+                    <h:link rendered="#{userDisplay.guest}" outcome="login">Login</h:link>
+                    <h:commandLink rendered="#{!userDisplay.guest}" action="#{userDisplay.logout}">Logout</h:commandLink>
+                    <br/>
+                    Welcome #{userDisplay.user.display}
+                    <br/>
+                    <h:link style="margin-right: 5px;" outcome="mybazaar">My Bazaar</h:link>
+                    <h:commandLink action="#{sellController.startSellWizard()}">Sell</h:commandLink>
+                    <h:link outcome="account">Account</h:link>
+                </h:form>
+            </div>
+            <div class="divider"></div>
+            <ui:insert name="content"/>
+        </div>
+    </h:body>
+</f:view>
+</html>

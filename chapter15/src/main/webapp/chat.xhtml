@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<HTML
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Welcome to Action Bazaar</title>
+    </h:head>
+    <h:body>
+        <script>
+            var webSocket = null;
+            var wsUri = "ws://127.0.0.1:8080/chapter15/chat";
+            function init() {
+                // Web socket event handlers
+                var btnSend = document.getElementById('btnSend');
+                var btnClose = document.getElementById('btnClose');
+                btnSend.addEventListener('click',postMessage,false);
+                btnClose.addEventListener('click',closeWebSocket,false);
+                webSocket = new WebSocket(wsUri);
+                webSocket.onopen = function(evt) { onOpen(evt); };
+                webSocket.onclose = function(evt) { onClose(evt); };
+                webSocket.onmessage = function(evt) { onMessage(evt); };
+                webSocket.onerror = function(evt) { onError(evt); };   
+            }
+ 
+            function onOpen(evt) {
+                console.log("web socket open");
+            }
+            
+            function onClose(evt) {
+                console.log("web socket close");
+            }
+            
+            function onMessage(evt) {
+                console.log("web socket message received");
+            }
+            
+            function onError(evt) {
+                console.log("web socket error!!")
+            }
+            
+            function postMessage() {
+                msg = webSocket.send("hi Ryan!");
+            }
+            
+            function closeWebSocket() {
+                webSocket.close();
+            }
+        
+            window.addEventListener('load',init,false);
+        </script>
+        
+        <button id="btnSend">Send Message</button>
+        <button id="btnClose">Close</button>
+        
+    </h:body>
+</HTML>

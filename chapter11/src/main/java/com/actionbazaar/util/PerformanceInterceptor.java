@@ -32,6 +32,13 @@ import javax.interceptor.InvocationContext;
 @PerformanceMonitor @Interceptor
 public class PerformanceInterceptor {
     
+    /**
+     * Default constructor - logs a message so that we know the interceptor has been instantiated.
+     */
+    public PerformanceInterceptor() {
+        Logger.getLogger("PerformanceInterceptor").log(Level.INFO, "Performance Interceptor Instantiated.");
+    }
+    
     @AroundInvoke
     public Object monitor(InvocationContext ctx) throws Exception {
         long start = new Date().getTime();

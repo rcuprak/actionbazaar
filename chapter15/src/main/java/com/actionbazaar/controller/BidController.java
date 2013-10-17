@@ -65,7 +65,7 @@ public class BidController implements Serializable {
     @Inject @AuthenticatedUser
     private User user;
     
-    @Inject @Seller
+  
     private User seller;
     
     /**
