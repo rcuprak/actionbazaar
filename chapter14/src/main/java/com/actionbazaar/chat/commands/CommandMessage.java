@@ -1,5 +1,5 @@
 /**
- *  ChatServer.java
+ *  CommandMessage.java
  *  EJB 3 in Action
  *  Book: http://manning.com/panda2/
  *  Code: http://code.google.com/p/action-bazaar/
@@ -15,21 +15,19 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.actionbazaar.chat;
+package com.actionbazaar.chat.commands;
 
+import com.actionbazaar.chat.ChatServer;
 import java.util.HashMap;
 import java.util.Map;
+import javax.json.JsonObject;
+import javax.json.stream.JsonGenerator;
 
 /**
- * Command Message
+ * Represents a command - sent by either the client or the server.
  * @author Ryan Cuprak
  */
-public class CommandMessage {
-    
-    /**
-     * Command
-     */
-    private CommandType command;
+public class CommandMessage extends AbstractCommand {
     
     /**
      * Parameters for the command
@@ -37,20 +35,28 @@ public class CommandMessage {
     private Map<String,String> parameters = new HashMap<>();
     
     /**
-     * Constructs a new command message
-     * @param command - command message
+     * Invoked by the decoder
      */
-    public CommandMessage(CommandType command, Map<String,String> parameters) {
-        this.command = command;
-        this.parameters = parameters;
+    protected CommandMessage() {
+        super(null);
     }
     
     /**
-     * Returns the command
-     * @return command
+     * Constructs a new no parameter command message
+     * @param command - command
      */
-    public CommandType getCommand() {
-        return command;
+    public CommandMessage(CommandTypes command) {
+        super(command);
+    }
+    
+    /**
+     * Initializes a command message
+     * @param command - message
+     * @param parameters - parameters
+     */
+    public CommandMessage(CommandTypes command,Map<String,String> parameters) {
+        super(command);
+        this.parameters = parameters;
     }
     
     /**
@@ -59,5 +65,41 @@ public class CommandMessage {
      */
     public Map<String,String> getParameters() {
         return parameters;
+    }  
+
+    /**
+     * Writes out the entries
+     * @param writer 
+     */
+    @Override
+    void encode(JsonGenerator writer) {
+        for(Map.Entry<String,String> entry : parameters.entrySet()) {
+            writer.write(entry.getKey(),entry.getValue());
+        }
+    }
+
+    /**
+     * Decodes the incoming message
+     * @param jsonObject - json object
+     */
+    @Override
+    void decode(JsonObject jsonObject) {
+        for(String key : jsonObject.keySet()) {
+            if(!key.equals(("type"))) {
+                parameters.put(key,jsonObject.getString(key));
+            } else {
+                setCommandType(CommandTypes.valueOf(jsonObject.getString(key)));
+            }
+        }
+    }
+
+    /**
+     * Performs the requested command.
+     */
+    @Override
+    public void perform() {
+        switch(getCommand()) {
+             
+        }
     }
 }

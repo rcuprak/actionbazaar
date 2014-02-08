@@ -15,13 +15,29 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.actionbazaar.chat;
+package com.actionbazaar.chat.commands;
 
 /**
- * Type of the command
+ * Enumeration of the different types of commands.
  * @author Ryan Cuprak
  */
-public enum CommandType {
-    CONNECT,
-    MESSAGE
+public enum CommandTypes {
+    CONNECT(CommandMessage.class),
+    MESSAGE(ChatMessage.class),
+    CSR_LOST(CommandMessage.class),
+    CLIENT_LOST(CommandMessage.class);
+    
+    private final Class clazz;
+    
+    CommandTypes(Class clazz) {
+        this.clazz = clazz;
+    }
+    
+    /**
+     * Returns the command class
+     * @return command class
+     */
+    public Class getCommandClass() {
+        return clazz;
+    }
 }

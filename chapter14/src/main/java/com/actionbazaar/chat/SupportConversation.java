@@ -17,6 +17,9 @@
  */
 package com.actionbazaar.chat;
 
+import com.actionbazaar.chat.commands.CommandTypes;
+import com.actionbazaar.chat.commands.CommandMessage;
+import com.actionbazaar.chat.commands.ChatMessage;
 import com.actionbazaar.account.Employee;
 import java.io.IOException;
 import java.io.Serializable;
@@ -72,10 +75,10 @@ public class SupportConversation implements Serializable {
         } else {
             parameters.put("message","You are talking to " + clientSession.getUserPrincipal());
         } 
-        CommandMessage introForCsr = new CommandMessage(CommandType.CONNECT,parameters);
+        CommandMessage introForCsr = new CommandMessage(CommandTypes.CONNECT,parameters);
         parameters = new HashMap<>();
         parameters.put("message","You are talking to " + csrSession.getUserPrincipal());
-        CommandMessage introForClient = new CommandMessage(CommandType.CONNECT,parameters);
+        CommandMessage introForClient = new CommandMessage(CommandTypes.CONNECT,parameters);
         clientSession.getAsyncRemote().sendObject(introForClient);
         csrSession.getAsyncRemote().sendObject(introForCsr);
     }
@@ -99,22 +102,6 @@ public class SupportConversation implements Serializable {
         ChatMessage cm = new ChatMessage(username,message);
         csrSession.getAsyncRemote().sendObject(cm);
         clientSession.getAsyncRemote().sendObject(cm);
-    }
-    
-    /**
-     * Ends the conversation
-     */
-    public void close() {
-        try {
-            csrSession.close();
-        } catch (IOException ex) {
-            Logger.getLogger(SupportConversation.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
-            clientSession.close();
-        } catch (IOException ex) {
-            Logger.getLogger(SupportConversation.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
     
     /**
