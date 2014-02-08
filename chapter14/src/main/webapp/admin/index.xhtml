@@ -9,6 +9,59 @@
             <h:form id="mainForm">
                 <h:link title="Chat Support" outcome="admin-chat">Support Chat</h:link>
             </h:form>
+            
+            <div style="border: black; border-style: solid; border-width: 1px;">
+                <div style="display: inline">Support Chat Status</div>
+                <div style="display: inline">CSR Online:</div><div id="csrOnline"></div>
+                <div style="display: inline">CSR Conversations:</div><div id="csrConversations"></div>
+                <div style="display: inline">Users waiting:</div><div id="usersWaiting"></div>
+            </div>
+            <script>
+                
+            var webSocket = null;
+            var wsUri = "ws://" + document.location.host + '/chapter14/' + "status";
+            
+            function onOpen(evt) {
+                console.log("web socket open");
+            }
+            
+            function onClose(evt) {
+                console.log("web socket close");
+            }
+            
+            function onMessage(evt) {
+                console.log("web socket message received: " + evt.data);
+            }
+            
+            function onError(evt) {
+                console.log("web socket error!!")
+            }
+            
+            function postMessage() {
+                var message = $('#message').val();
+                $('#message').val('');
+                msg = webSocket.send(message);
+            }
+            
+            function closeWebSocket() {
+                webSocket.close();
+            }
+        
+        
+            $( document ).ready(function() {
+                console.log( "->Page loaded - monitoring status.");
+             /*   webSocket = new WebSocket(wsUri);
+                webSocket.onopen = function(evt) { onOpen(evt); };
+                webSocket.onclose = function(evt) { onClose(evt); };
+                webSocket.onmessage = function(evt) { onMessage(evt); };
+                webSocket.onerror = function(evt) { onError(evt); };
+                */
+            });
+        
+        
+
+        </script>
+            
         </ui:define>
     </ui:composition>
 </HTML>

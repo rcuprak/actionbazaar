@@ -1,5 +1,5 @@
 /**
- *  ChatServer.java
+ *  ClientChatEndpoint.java
  *  EJB 3 in Action
  *  Book: http://manning.com/panda2/
  *  Code: http://code.google.com/p/action-bazaar/
@@ -17,26 +17,21 @@
  */
 package com.actionbazaar.chat;
 
-import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.ejb.Stateless;
-import javax.inject.Inject;
+import javax.ejb.EJB;
+import javax.servlet.ServletContextListener;
+import javax.websocket.CloseReason;
+import javax.websocket.Endpoint;
 import javax.websocket.EndpointConfig;
-import javax.websocket.OnClose;
-import javax.websocket.OnError;
-import javax.websocket.OnMessage;
-import javax.websocket.OnOpen;
 import javax.websocket.Session;
-import javax.websocket.server.ServerEndpoint;
+import javax.websocket.server.ServerContainer;
 
 /**
- * Chat server
+ * This is the endpoint which handles incoming chat messages from the user.
  * @author Ryan Cuprak
  */
-@Stateless
-@ServerEndpoint(value="/chat",encoders = {MessageEncoder.class,CommandEncoder.class})
-public class ClientChat implements Serializable {
+public class ClientChatEndpoint extends Endpoint {
     
     /**
      * Serial UID
@@ -49,50 +44,40 @@ public class ClientChat implements Serializable {
     private static final Logger logger = Logger.getLogger("ChatService");
     
     /**
+     * Creates a new chat client
+     */
+    public ClientChatEndpoint() {
+        logger.log(Level.INFO, "ClientChat instance: {0}");
+        ServerContainer sc;
+       
+        
+    }
+    
+    /**
      * Reference to the chat server
      */
-    @Inject
+    @EJB
     private ChatServer chatServer;
-    
+
     /**
-     * Registers the session with the chat server 
-     * @param session
-     * @param conf 
+     * Handles the open
+     * @param session - new session
+     * @param config - configuration
      */
-    @OnOpen
-    public void open(Session session, EndpointConfig conf) { 
-        logger.log(Level.INFO, "Connection opened: {0}", session.getId());
+    @Override
+    public void onOpen(Session session, EndpointConfig config) {
         chatServer.addClientSession(session);
+        session.addMessageHandler(new CommandMessageHandler(chatServer,session));
     }
-    
-    /**
-     * Sends a message 
-     * @return Text to echo
-     */
-    @OnMessage
-    public String sendMessage(Session session, String message) {
-        logger.log(Level.INFO, "Got message: {0}", session.getUserPrincipal());
-        chatServer.handleMessage(session, message);
-        return message;
-    }
-    
-    /**
-     * Connection closed
-     * @param session 
-     */
-    @OnClose
-    public void close(Session session) {
+
+    @Override
+    public void onError(Session session, Throwable thr) {
         chatServer.removeClientSession(session);
+        logger.log(Level.SEVERE,"There was a fatal error",thr);
     }
-    
-    /**
-     * Handles errors
-     * @param session
-     * @param error 
-     */
-    @OnError
-    public void error(Session session, Throwable error) { 
-        logger.log(Level.INFO, "Handling errors: {0}", error.getMessage());
+
+    @Override
+    public void onClose(Session session, CloseReason closeReason) {
         chatServer.removeClientSession(session);
     }
 }

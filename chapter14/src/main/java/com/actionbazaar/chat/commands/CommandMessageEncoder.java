@@ -15,10 +15,9 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.actionbazaar.chat;
+package com.actionbazaar.chat.commands;
 
 import java.io.StringWriter;
-import java.util.Map;
 import javax.json.Json;
 import javax.json.stream.JsonGenerator;
 import javax.websocket.EncodeException;
@@ -29,8 +28,8 @@ import javax.websocket.EndpointConfig;
  * Encodes commands
  * @author Ryan Cuprak
  */
-public class CommandEncoder implements Encoder.Text<CommandMessage>{
-
+public class CommandMessageEncoder implements Encoder.Text<AbstractCommand>{
+  
     /**
      * Initialize method
      * @param config - endpoint configuration
@@ -50,20 +49,17 @@ public class CommandEncoder implements Encoder.Text<CommandMessage>{
     
     /**
      * Encodes the message
-     * @param chatMessage - chat message
+     * @param commandMessage - command message
      * @return JSON encoded message
      * @throws EncodeException - thrown if there is a problem encoding the message
      */
     @Override
-    public String encode(CommandMessage commandMessage) throws EncodeException {
+    public String encode(AbstractCommand commandMessage) throws EncodeException {
         StringWriter writer = new StringWriter();
         try (JsonGenerator jsonWriter = Json.createGenerator(writer)) {
             jsonWriter.writeStartObject();
             jsonWriter.write("type",commandMessage.getCommand().toString());
-            Map<String,String> parameters = commandMessage.getParameters();
-            for(Map.Entry<String,String> entry : parameters.entrySet()) {
-                jsonWriter.write(entry.getKey(),entry.getValue());
-            }
+            commandMessage.encode(jsonWriter);
             jsonWriter.writeEnd();
         }
         return writer.toString();

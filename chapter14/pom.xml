@@ -104,8 +104,8 @@
         <dependency>  
             <groupId>org.primefaces</groupId>  
             <artifactId>primefaces</artifactId>  
-            <version>3.5</version>  
-        </dependency>  
+            <version>4.0</version>  
+        </dependency>   
         <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>

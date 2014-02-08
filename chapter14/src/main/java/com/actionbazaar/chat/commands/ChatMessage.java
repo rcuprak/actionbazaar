@@ -15,13 +15,18 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.actionbazaar.chat;
+package com.actionbazaar.chat.commands;
+
+import com.actionbazaar.chat.ChatServer;
+import javax.json.JsonObject;
+import javax.json.JsonReader;
+import javax.json.stream.JsonGenerator;
 
 /**
  * Represents a chat message
  * @author Ryan Cuprak
  */
-public class ChatMessage {
+public class ChatMessage extends AbstractCommand {
 
     /**
      * User
@@ -34,11 +39,19 @@ public class ChatMessage {
     private String message;
     
     /**
+     * Protected constructor- used by the decoder
+     */
+    protected ChatMessage() {
+        super(CommandTypes.MESSAGE);
+    }
+    
+    /**
      * Constructs a new chat message
      * @param user - user
      * @param message - user
      */
     public ChatMessage(String user, String message) {
+        super(CommandTypes.MESSAGE);
         this.user = user;
         this.message = message;
     }
@@ -57,5 +70,37 @@ public class ChatMessage {
      */
     public String getMessage() {
         return message;
+    }
+
+    /**
+     * Encodes a chat message
+     * @param writer - JSON writer
+     */
+    @Override
+    void encode(JsonGenerator writer) {
+        writer.write("user",user);
+        writer.write("message",message);
+    }
+
+    /**
+     * Decodes a message
+     * @param jsonObject - json object to be decoded 
+     */
+    @Override
+    void decode(JsonObject jsonObject) {
+        if(jsonObject.containsKey("user")) {
+            user = jsonObject.getString("user");
+        }    
+        if(jsonObject.containsKey("message")) {
+            message = jsonObject.getString("message");
+        }
+    }
+
+    /**
+     * Sends the message out.
+     */
+    @Override
+    public void perform() {
+        chatServer.sendMessage(session, message);
     }
 }
