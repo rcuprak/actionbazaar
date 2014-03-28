@@ -18,6 +18,7 @@
 package com.actionbazaar.chat.bulletin;
 
 import java.io.Reader;
+import com.actionbazaar.chat.ChatServer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
@@ -68,12 +69,19 @@ public class BulletinService implements MessageListener {
     private JMSConsumer consumer;
     
     /**
+     * Chat server
+     */
+    private ChatServer chatServer;
+    
+    /**
      * Producer
      */
     private JMSProducer producer;
     
     /**
-     * Invoked when a client connects to the server
+     * Invoked when a client connects to the server.
+     * Send back the number of connected clients from the ChatServer. 
+     * After this initial update, all updates will come via JMS.
      * @param session 
      * @param clientType - type of the client
      */
