@@ -66,7 +66,6 @@ public class CommandMessageDecoder implements Decoder.Text<AbstractCommand> {
        CommandTypes cmdType = CommandTypes.valueOf(type);
         try {
             AbstractCommand cmd = (AbstractCommand)cmdType.getCommandClass().newInstance();
-            
             cmd.decode(struct);
             return cmd;
         } catch (InstantiationException | IllegalAccessException ex) {
@@ -85,8 +84,9 @@ public class CommandMessageDecoder implements Decoder.Text<AbstractCommand> {
         JsonObject struct;
         try (JsonReader rdr = Json.createReader(new StringReader(message))) {
             struct = rdr.readObject();
+        } catch (Exception e) {
+            return false;
         }
-      //  return struct.containsKey("type");
         return true;
     }
 

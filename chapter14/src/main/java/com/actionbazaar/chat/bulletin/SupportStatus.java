@@ -1,15 +1,57 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ *  Bootstrap.java
+ *  EJB 3 in Action
+ *  Book: http://manning.com/panda2/
+ *  Code: http://code.google.com/p/action-bazaar/
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
  */
-
 package com.actionbazaar.chat.bulletin;
 
 /**
- *
- * @author rcuprak
+ * Current status
+ * @author Ryan Cuprak
  */
 public class SupportStatus {
+    
+    /**
+     * Client backlog
+     */
+    private final int clientBacklog;
+    
+    /**
+     * Total Custom Service Representatives
+     */
+    private final int totalCSRs;
+    
+    public SupportStatus(int clientBacklog, int totalCSRs) {
+        this.clientBacklog = clientBacklog;
+        this.totalCSRs = totalCSRs;
+    }
+
+    /**
+     * Returns the client backlog
+     * @return client backlog
+     */
+    public int getClientBacklog() {
+        return clientBacklog;
+    }
+
+    /**
+     * Returns total customer service representatives
+     * @return customer service representatives
+     */
+    public int getTotalCSRs() {
+        return totalCSRs;
+    }
     
 }

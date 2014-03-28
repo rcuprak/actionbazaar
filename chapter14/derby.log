@@ -1,7 +1,7 @@
 ----------------------------------------------------------------
-Thu Aug 22 16:31:47 EDT 2013:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.9.1.0 - (1344872): instance a816c00e-0140-a7b9-d1c1-000005433838 
-on database directory /Users/rcuprak/Projects/action-bazaar/chapter14/target/databases/derby  with class loader sun.misc.Launcher$AppClassLoader@5f996bbd 
+Wed Oct 16 23:16:38 EDT 2013:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.9.1.0 - (1344872): instance a816c00e-0141-c46a-3b30-00000ff20ac8 
+on database directory /Users/rcuprak/Projects/action-bazaar/chapter14/target/databases/derby  with class loader sun.misc.Launcher$AppClassLoader@7e820d53 
 Loaded from file:/Users/rcuprak/.m2/repository/org/glassfish/main/extras/glassfish-embedded-all/4.0/glassfish-embedded-all-4.0.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.7.0_25-b15
@@ -9,9 +9,9 @@ user.dir=/Users/rcuprak/Projects/action-bazaar/chapter14
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''
 ----------------------------------------------------------------
-Thu Aug 22 16:32:10 EDT 2013:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.9.1.0 - (1344872): instance 45ee0190-0140-a7b9-d1c1-000005433838 
-on database directory /private/var/folders/7t/g3k9cwhd31b47wqmwb_cljp80000gn/T/gfembed6518229794490734742tmp/lib/databases/ejbtimer  with class loader sun.misc.Launcher$AppClassLoader@5f996bbd 
+Wed Oct 16 23:16:41 EDT 2013:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.9.1.0 - (1344872): instance 45ee0190-0141-c46a-3b30-00000ff20ac8 
+on database directory /private/var/folders/r0/ffxm_xyn2lng4sd735f95jz40000gn/T/gfembed2367274929647932973tmp/lib/databases/ejbtimer  with class loader sun.misc.Launcher$AppClassLoader@7e820d53 
 Loaded from file:/Users/rcuprak/.m2/repository/org/glassfish/main/extras/glassfish-embedded-all/4.0/glassfish-embedded-all-4.0.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.7.0_25-b15

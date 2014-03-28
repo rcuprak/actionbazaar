@@ -80,6 +80,13 @@ public class ChatServer {
     }
     
     /**
+     * Returns session statistics
+     */
+    public void getSessionStats() {
+        
+    }
+    
+    /**
      * Registers a new customer service representative.
      * @param csrSession - custom service representative
      */
