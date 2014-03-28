@@ -65,7 +65,7 @@ public class UserDisplay implements Serializable {
             Context ctx = null;
             try {
                 ctx = new InitialContext();
-                UserService us = (UserService)ctx.lookup("java:global/actionbazaar/UserServiceBean");
+                UserService us = (UserService)ctx.lookup("java:global/chapter14/UserServiceBean");
                 user = us.getUser(remoteUser);
             } catch (NamingException e) {
                 logger.log(Level.SEVERE,"Unable to retrieve the UserServiceBean.",e);

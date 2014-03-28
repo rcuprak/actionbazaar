@@ -17,23 +17,20 @@
  */
 package com.actionbazaar.chat;
 
-import java.io.Serializable;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.inject.Inject;
+import javax.ejb.EJB;
+import javax.websocket.CloseReason;
+import javax.websocket.Endpoint;
 import javax.websocket.EndpointConfig;
-import javax.websocket.OnError;
-import javax.websocket.OnMessage;
-import javax.websocket.OnOpen;
 import javax.websocket.Session;
-import javax.websocket.server.ServerEndpoint;
 
 /**
  * Chat Support - user must be in the CSR role
  * @author Ryan Cuprak
  */
-@ServerEndpoint(value="/support",encoders = {MessageEncoder.class,CommandEncoder.class})
-public class SupportChat implements Serializable {
+public class SupportChatEndpoint extends Endpoint {
    
     /**
      * Logger
@@ -41,40 +38,34 @@ public class SupportChat implements Serializable {
     private static final Logger logger = Logger.getLogger("ChatSupport");
     
     /**
-     * Serial UID
-     */
-    private static final long serialVersionUID = 4588122135773589676L;
-    
-    /**
      * Chat server
      */
-    @Inject
-    private ChatServer chatServer;
-    
+    @EJB
+    private ChatServer chatServer;   
+
     /**
-     * Opens 
-     * @param session
-     * @param conf 
+     * Opens the connection
+     * @param session - session
+     * @param config - endpoint configuration
      */
-    @OnOpen
-    public void open(Session session, EndpointConfig conf) { 
-        logger.info("Connection opened.");
+    @Override
+    public void onOpen(Session session, EndpointConfig config) {
         chatServer.customServiceRepConnected(session);
+        session.addMessageHandler(new CommandMessageHandler(chatServer,session));
     }
     
-    /**
-     * Sends a message 
-     * @return Text to echo
-     */
-    @OnMessage
-    public String sendMessage(Session session, String message) {
-        logger.log(Level.INFO, "Got message: {0}", message);
-        chatServer.handleMessage(session, message);
-        return message;
+    @Override
+    public void onError(Session session, Throwable thr) {
+        chatServer.customServiceRepDisconnected(session);
+        try {
+            session.close(new CloseReason(CloseReason.CloseCodes.UNEXPECTED_CONDITION,thr.getMessage()));
+        } catch (IOException ex) {
+            Logger.getLogger(SupportChatEndpoint.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-    
-    @OnError
-    public void error(Session session, Throwable error) { 
-        logger.info("Handling errors: " + error.getMessage());
-    }    
+
+    @Override
+    public void onClose(Session session, CloseReason closeReason) {
+        chatServer.customServiceRepDisconnected(session);
+    } 
 }

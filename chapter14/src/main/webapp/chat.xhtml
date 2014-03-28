@@ -1,89 +1,26 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
+<HTML
+    xmlns="http://www.w3.org/1999/xhtml"
     xmlns:h="http://xmlns.jcp.org/jsf/html"
     xmlns:f="http://xmlns.jcp.org/jsf/core"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
-    <h:head>
-        <title>Chat</title>
-    </h:head>
-    <h:body>
-        <h:form>
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <ui:composition template="/WEB-INF/template.xhtml">
+        <ui:define name="content">
+         <h:form>
             <h:outputScript library="js" name="jquery-1.10.2.js" />
+            <h:outputScript library="js" name="chat.js" />
             <h:outputStylesheet library="css" name="site.css"/>
             <script>
-                var webSocket = null;
-                var wsUri = "ws://" + document.location.host + '/chapter14/' + "chat";
-
-                function onOpen(evt) {
-                    $("#messageWindow").append("Connected - waiting for representative.<br/>");
-                    
-                }
-
-                function onClose(evt) {
-                    $("#messageWindow").append("Chat Session Over.<br/>");
-                    $('#btnSend').attr("disabled",true);
-                    $('#btnClose').attr("disabled",true);
-                    $('#messageWindow').attr("disabled",true);
-                }
-
-                function onMessage(evt) {
-                    var msg = eval('(' + evt.data + ')');
-                    if(msg.type === 'ChatMessage') {
-                        $("#messageWindow").append('<span style="font-weight: bold; padding-right: 10px;">' + msg.user + '</span>');
-                        $("#messageWindow").append(msg.message + '<br/>');
-                    } else if (msg.type === 'CONNECT') {
-                        $('#btnSend').attr("disabled",false);
-                        $('#btnClose').attr("disabled",false);
-                        $('#messageWindow').attr("disabled",false);
-                        $("#messageWindow").append('<div style="font-weight: bold;">' + msg.message + '</div>');
-                    } else {
-                        $("#messageWindow").append('<span style="font-weight: bold;">UNKNOWN MESSAGE</span>');
-                    }
-                }
-
-                function onError(evt) {
-                    console.log("web socket error!!" + evt);
-                    $("#messageWindow").append("Connection lost.<br/>");
-                }
-
-                function postMessage() {
-                    var message = $('#message').val();
-                    $('#message').val('');
-                    webSocket.send(message);
-                }
-
-                function closeWebSocket() {
-                    webSocket.close();
-                }
-                $(document).ready(function() {
-                    $('#btnSend').attr("disabled", true);
-                    $('#btnClose').attr("disabled", true);
-                    $('#messageWindow').attr("disabled", true);
-                    webSocket = new WebSocket(wsUri);
-                    webSocket.onopen = function(evt) {
-                        onOpen(evt);
-                    };
-                    webSocket.onclose = function(evt) {
-                        onClose(evt);
-                    };
-                    webSocket.onmessage = function(evt) {
-                        onMessage(evt);
-                    };
-                    webSocket.onerror = function(evt) {
-                        onError(evt);
-                    };
-                });
+                var chat = new Chat("chat","Waiting for a representative...");
             </script>
-            <div>Chat</div>
-            <div id="messageWindow" style="width:500px; height:300px; overflow:scroll;">
-
-            </div>
+            <div class="">Support Chat</div>
+            <div id="messageWindow" class="messageWindow"></div>
             <br/>
             <input id="message" size="50" type="text"/>
-            <button id="btnSend" onclick="postMessage();" type="button">Send</button>
-            <button id="btnClose" onclick="closeWebSocket();" type="button">End Chat</button>
+            <button id="btnSend" onclick="chat.postMessage();" type="button">Send</button>
+            <button id="btnClose" onclick="chat.closeWebSocket();" type="button">End Chat</button>
             <br/>
-        </h:form>
-    </h:body>
-</html>
+        </h:form>  
+        </ui:define>
+    </ui:composition>
+</HTML> 
