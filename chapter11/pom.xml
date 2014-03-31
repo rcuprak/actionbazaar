@@ -3,12 +3,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.actionbazaar.chapter11</groupId>
-    <artifactId>chapter11</artifactId>
+    <groupId>com.actionbazaar.chapter12</groupId>
+    <artifactId>chapter12</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>chapter11</name>
+    <name>chapter12</name>
+    
+    <description>
+        Source code for chapter 12 - Using CDI and EJB 3.
+    </description>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
@@ -151,5 +155,4 @@
             <name>Repository for library EclipseLink (JPA 2.0)</name>
         </repository>
     </repositories>
-    <description>Using CDI with EJB 3</description>
 </project>
