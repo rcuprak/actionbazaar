@@ -1,10 +1,7 @@
-This is an early access snapshot of the code for the second edition.
+This is a code snapshot from https://code.google.com/p/action-bazaar/
 
-The code is being refactored to use Maven and also to unify it
-across chapters. By the end of the book the application will be fully
-functional.
+All of the chapters are Maven based and can be easily opened in NetBeans, IntelliJ, or Eclipse. The code samples were tested on GlassFish 3 (non Java EE 7 code) and GlassFish 4 for Java EE 7 (EJB 3.2) specific features. 
 
-The code is in flux so please check the code repository at:
-http://code.google.com/p/action-bazaar/
+To build run "mvn package" in the chapter sub-directory that you want to build.
 
 
