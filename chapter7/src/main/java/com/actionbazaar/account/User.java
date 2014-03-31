@@ -17,7 +17,6 @@
  */
 package com.actionbazaar.account;
 
-import com.sun.org.apache.xml.internal.security.utils.Base64;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
@@ -42,6 +41,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import org.apache.commons.codec.binary.Base64;
 
 /**
  *
@@ -221,7 +221,7 @@ public abstract class User implements Serializable {
             md = MessageDigest.getInstance("SHA-256");
             md.update(password.getBytes("UTF-8"));
             byte[] digest = md.digest();
-            String encodedPassword = Base64.encode(digest);
+            String encodedPassword = Base64.encodeBase64String(digest);
             this.password = encodedPassword;
         } catch (NoSuchAlgorithmException e) {
             logger.log(Level.SEVERE,"Password creation failed",e);
