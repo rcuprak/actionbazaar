@@ -5,7 +5,7 @@
 package ejb3inaction.example;
 
 import javax.ejb.EJB;
-import org.jboss.arquillian.api.Deployment;
+import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.Archive;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
@@ -25,8 +25,8 @@ public class HelloUserBeanTest {
 
     @Deployment
     public static Archive<?> createDeployment() {
-        return ShrinkWrap.create(JavaArchive.class, "foo.jar")
-        .addClasses(HelloUserBean.class);
+    	return ShrinkWrap.create(JavaArchive.class, "foo.jar")
+    					 .addClasses(HelloUserBean.class,HelloUser.class);
     }
 
     /**
