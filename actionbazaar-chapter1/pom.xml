@@ -6,7 +6,7 @@
     <name>Chapter 1: ActionBazaar</name>
     <packaging>war</packaging>
     <parent>
-    	<groupId>com.ejb3.example</groupId>
+    	<groupId>com.ejb3ia</groupId>
     	<artifactId>actionbazaar</artifactId>
     	<version>DYNAMIC-SNAPSHOT</version>
     </parent>
