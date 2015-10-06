@@ -1,0 +1,32 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.ejb3.example</groupId>
+	<artifactId>actionbazaar</artifactId>
+	<version>DYNAMIC-SNAPSHOT</version>
+	<name>Action Bazaar</name>
+	<url>https://github.com/KiranMohan/actionbazaar</url>
+	<description>Source code for ActionBazaar example in EJB 3 in Action, Second Edition</description>
+	<packaging>pom</packaging>
+	<modules>
+		<module>actionbazaar-chapter1</module>
+	</modules>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>8</source>
+					<target>8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+		</plugins>
+		</pluginManagement>
+	</build>
+</project>
