@@ -1,6 +1,6 @@
 This is a code snapshot from https://code.google.com/p/action-bazaar/
 
-Kiran: Updating project structure and dependencies.
+Kiran: Updating project structure and dependencies - Oct 2015.
 	Done:
 		actionbazaar-chapter1
 	Ongoing:
@@ -22,9 +22,10 @@ Kiran: Updating project structure and dependencies.
 	
 Instructions
 ============
-All of the chapters are Maven based and can be easily opened in NetBeans, 
-   IntelliJ, or Eclipse. The code samples were tested on the GlassFish 4.1 and 
-   the WildFly 9.0.1 application servers. 
+All of the chapters are Maven based. The code samples were tested on the 
+   GlassFish 4.1 and the WildFly 9.0.1 application servers. The code may be 
+   imported in IDEs supporting Maven. Eclipse was used for updating project 
+   structure and dependencies in Oct 2015.
 
 General instructions to run the unit tests (using JUnit + Arquillian) unless 
    otherwise specified in the respective modules
