@@ -23,12 +23,20 @@ Kiran: Updating project structure and dependencies.
 Instructions
 ============
 All of the chapters are Maven based and can be easily opened in NetBeans, 
-   IntelliJ, or Eclipse. The code samples were tested on GlassFish 4.1. 
+   IntelliJ, or Eclipse. The code samples were tested on the GlassFish 4.1 and 
+   the WildFly 9.0.1 application servers. 
 
 General instructions to run the unit tests (using JUnit + Arquillian) unless 
    otherwise specified in the respective modules
    
-   To run in remote Glassfish server
+   To run in remote WildFly server (tests run very fast)
+   1. Install WildFly server if not installed.
+   2. Run WildFly server in standalone mode.
+   3. Execute the tests
+   		cd [module]
+		mvn -P glassfish_remote test
+		
+   To run in remote Glassfish server (tests run slow for some reason)
    1. Install Glassfish server if not installed.
    2. Run Glassfish server
    3. Execute the tests
