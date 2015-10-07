@@ -1,15 +1,9 @@
 This is a code snapshot from https://code.google.com/p/action-bazaar/
 
-All of the chapters are Maven based and can be easily opened in NetBeans, 
-IntelliJ, or Eclipse. The code samples were tested on GlassFish 3 (non Java EE 7
- code) and GlassFish 4 for Java EE 7 (EJB 3.2) specific features. 
-
-To build run "mvn package" in the chapter sub-directory that you want to build.
-
 Kiran: Updating project structure and dependencies.
 	Done:
-	Ongoing:
 		actionbazaar-chapter1
+	Ongoing:
 	ToDo: 
 		ActionBazaar/
 		actionbazaar-chapter10/
@@ -26,3 +20,19 @@ Kiran: Updating project structure and dependencies.
 		actionbazaar-chapter8/
 		actionbazaar-chapter9/
 	
+Instructions
+============
+All of the chapters are Maven based and can be easily opened in NetBeans, 
+   IntelliJ, or Eclipse. The code samples were tested on GlassFish 4.1. 
+
+General instructions to run the unit tests (using JUnit + Arquillian) unless 
+   otherwise specified in the respective modules
+   
+   To run in remote Glassfish server
+   1. Install Glassfish server if not installed.
+   2. Run Glassfish server
+   3. Execute the tests
+   		cd [module]
+		mvn -P glassfish_remote test
+		   		
+ 
