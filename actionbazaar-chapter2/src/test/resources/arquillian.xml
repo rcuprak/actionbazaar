@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<arquillian xmlns="http://jboss.com/arquillian"
- xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xmlns:glassfish="urn:arq:org.jboss.arquillian.container.glassfish.embedded_3">
-    <glassfish:container>
-        <glassfish:instanceRoot>src/test/resources/glassfish</glassfish:instanceRoot>
-        <glassfish:bindPort>9090</glassfish:bindPort>
-        <glassfish:autoDelete>false</glassfish:autoDelete>
-    </glassfish:container>
+<arquillian xmlns="http://jboss.org/schema/arquillian"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://jboss.org/schema/arquillian
+        http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
+	<container qualifier="glassfish-embedded" default="true">
+		<configuration>
+			<property name="resourcesXml">
+                src/test/resources-glassfish-embedded/glassfish-resources.xml
+            </property>
+		</configuration>
+	</container>
 </arquillian>

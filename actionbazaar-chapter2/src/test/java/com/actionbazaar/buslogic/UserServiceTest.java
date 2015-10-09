@@ -20,9 +20,7 @@ import com.actionbazaar.persistence.Bid;
 import com.actionbazaar.persistence.Bidder;
 import com.actionbazaar.persistence.Item;
 import javax.ejb.EJB;
-import org.jboss.arquillian.api.Deployment;
-import org.jboss.arquillian.api.Run;
-import org.jboss.arquillian.api.RunModeType;
+import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.Archive;
 import org.jboss.shrinkwrap.api.ArchivePaths;
@@ -36,7 +34,6 @@ import org.junit.runner.RunWith;
  * This verifies that users can be persisted and retrieved.
  */
 @RunWith(Arquillian.class)
-@Run(RunModeType.IN_CONTAINER)
 public class UserServiceTest {
 
     /**
@@ -51,10 +48,17 @@ public class UserServiceTest {
      */
     @Deployment
     public static Archive<?> createDeployment() {
-        return ShrinkWrap.create(JavaArchive.class, "foo.jar").addClasses(OrderProcessor.class,
-                OrderProcessorBean.class,UserService.class,UserServiceBean.class,
-                ItemService.class,
-                ItemServiceBean.class, Bid.class, Bidder.class, Item.class).addManifestResource("test-persistence.xml", ArchivePaths.create("persistence.xml"));
+        return ShrinkWrap.create(JavaArchive.class, "foo.jar")
+        				 .addClasses(OrderProcessor.class,
+					                 OrderProcessorBean.class,
+					                 UserService.class,
+					                 UserServiceBean.class,
+					                 ItemService.class,
+					                 ItemServiceBean.class, 
+					                 Bid.class, 
+					                 Bidder.class, 
+					                 Item.class)
+        				 .addAsManifestResource("test-persistence.xml", ArchivePaths.create("persistence.xml"));
     }
 
     /**

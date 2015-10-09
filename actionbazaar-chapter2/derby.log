@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Fri Oct 09 11:39:14 IST 2015:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-0150-4b37-b6cf-000003654448 
+on database directory C:\Users\kmohaned\workspace\study_javaee\ejb3_in_action_2ed\actionbazaar\actionbazaar-chapter2\target\databases\derby with class loader sun.misc.Launcher$AppClassLoader@548c4f57 
+Loaded from file:/C:/Users/kmohaned/.m2/repository/org/glassfish/main/extras/glassfish-embedded-all/4.1/glassfish-embedded-all-4.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_60-b27
+user.dir=C:\Users\kmohaned\workspace\study_javaee\ejb3_in_action_2ed\actionbazaar\actionbazaar-chapter2
+os.name=Windows 7
+os.arch=amd64
+os.version=6.1
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

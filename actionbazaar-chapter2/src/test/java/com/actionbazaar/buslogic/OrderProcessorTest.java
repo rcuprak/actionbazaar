@@ -24,9 +24,7 @@ import com.actionbazaar.persistence.Shipping;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
-import org.jboss.arquillian.api.Deployment;
-import org.jboss.arquillian.api.Run;
-import org.jboss.arquillian.api.RunModeType;
+import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.Archive;
 import org.jboss.shrinkwrap.api.ArchivePaths;
@@ -37,7 +35,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(Arquillian.class)
-@Run(RunModeType.IN_CONTAINER)
 public class OrderProcessorTest {
 
     /**
@@ -46,10 +43,17 @@ public class OrderProcessorTest {
      */
     @Deployment
     public static Archive<?> createDeployment() {
-        return ShrinkWrap.create(JavaArchive.class, "foo.jar").addClasses(OrderProcessor.class,
-                OrderProcessorBean.class,UserService.class,UserServiceBean.class,
-                ItemService.class,
-                ItemServiceBean.class, Bid.class, Bidder.class, Item.class).addManifestResource("test-persistence.xml", ArchivePaths.create("persistence.xml"));
+        return ShrinkWrap.create(JavaArchive.class, "foo.jar")
+        				 .addClasses(OrderProcessor.class,
+					                 OrderProcessorBean.class,
+					                 UserService.class,
+					                 UserServiceBean.class,
+					                 ItemService.class,
+					                 ItemServiceBean.class, 
+					                 Bid.class, 
+					                 Bidder.class, 
+					                 Item.class)
+        				 .addAsManifestResource("test-persistence.xml", ArchivePaths.create("persistence.xml"));
     }
     /**
      * Order processor
