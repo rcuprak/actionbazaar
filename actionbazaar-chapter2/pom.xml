@@ -15,9 +15,6 @@
 	<profiles>
 		<profile>
 			<id>glassfish-embedded</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
 			<dependencies>
 				<dependency>
 					<groupId>org.jboss.arquillian.container</groupId>
