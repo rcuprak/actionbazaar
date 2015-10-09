@@ -9,14 +9,6 @@
 		<artifactId>actionbazaar</artifactId>
 		<version>DYNAMIC-SNAPSHOT</version>
 	</parent>
-	<dependencies>
-		<dependency>
-			<groupId>org.jboss.spec</groupId>
-			<artifactId>jboss-javaee-7.0</artifactId>
-			<scope>provided</scope>
-			<type>pom</type>
-		</dependency>
-	</dependencies>
 	<build>
 		<finalName>ActionBazaar</finalName>
 	</build>

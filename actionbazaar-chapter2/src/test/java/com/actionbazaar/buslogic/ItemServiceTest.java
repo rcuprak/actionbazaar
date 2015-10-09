@@ -51,19 +51,15 @@ public class ItemServiceTest {
      */
     @Deployment
     public static Archive<?> createDeployment() {
-        Archive<?> archive = ShrinkWrap.create(JavaArchive.class, "foo.jar")
+       return ShrinkWrap.create(JavaArchive.class, "foo.jar")
         				 .addClasses(OrderProcessor.class,
 					                 OrderProcessorBean.class,
 					                 ItemService.class,
 					                 ItemServiceBean.class, 
 					                 Bid.class, 
 					                 Bidder.class, 
-					                 Item.class,
-					                 ItemServiceTest.class)
-        				 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml")
+					                 Item.class)
         				 .addAsManifestResource("test-persistence.xml", ArchivePaths.create("persistence.xml"));
-        System.out.println(archive.toString(true));
-        return archive;
     }
 
     /**
