@@ -71,12 +71,10 @@
 				<dependency>
 					<groupId>org.jboss.arquillian.container</groupId>
 					<artifactId>arquillian-glassfish-embedded-3.1</artifactId>
-					<scope>test</scope>
 				</dependency>
 				<dependency>
 					<groupId>org.glassfish.main.extras</groupId>
 					<artifactId>glassfish-embedded-all</artifactId>
-					<scope>provided</scope>
 				</dependency>
 			</dependencies>
 		</profile>		
