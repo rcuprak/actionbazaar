@@ -16,20 +16,17 @@
  */
 package com.actionbazaar.buslogic;
 
-import com.actionbazaar.persistence.Bid;
-import com.actionbazaar.persistence.Bidder;
-import com.actionbazaar.persistence.Billing;
-import com.actionbazaar.persistence.Item;
-import com.actionbazaar.persistence.Shipping;
+import com.actionbazaar.persistence.*;
+
 import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.Archive;
-import org.jboss.shrinkwrap.api.ArchivePaths;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.jboss.shrinkwrap.api.asset.EmptyAsset;
+import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -37,77 +34,90 @@ import org.junit.runner.RunWith;
 @RunWith(Arquillian.class)
 public class OrderProcessorTest {
 
-    /**
-     * Creates a deployment item.
-     * @return ShrinkWrap
-     */
-    @Deployment
-    public static Archive<?> createDeployment() {
-        return ShrinkWrap.create(JavaArchive.class, "foo.jar")
-        				 .addClasses(OrderProcessor.class,
-					                 OrderProcessorBean.class,
-					                 UserService.class,
-					                 UserServiceBean.class,
-					                 ItemService.class,
-					                 ItemServiceBean.class, 
-					                 Bid.class, 
-					                 Bidder.class, 
-					                 Item.class)
-        				 .addAsManifestResource("test-persistence.xml", ArchivePaths.create("persistence.xml"));
-    }
-    /**
-     * Order processor
-     */
-    @EJB
-    private OrderProcessor orderProcessor;
+	/**
+	 * Creates a deployment item.
+	 * 
+	 * @return ShrinkWrap
+	 */
+	@Deployment
+	public static Archive<?> createDeployment() {
+		return ShrinkWrap.create(WebArchive.class, "test.war")
+				.addClasses(
+						// com.actionbazaar.buslogic
+						BillingException.class,
+						OrderProcessor.class,
+						OrderProcessorBean.class,
+						ItemService.class,
+						ItemServiceBean.class,
+						UserService.class,
+						UserServiceBean.class,
+						// com.actionbazaar.persistence
+						Address.class, 
+						Bid.class, 
+						Bidder.class, 
+						Billing.class, 
+						Item.class, 
+						Order.class,
+						OrderStatus.class, 
+						Shipping.class, 
+						User.class)
+				.addAsResource("test-persistence.xml", "META-INF/persistence.xml")
+				.addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
+				.addAsWebInfResource("jbossas-ds.xml");
+	}
+	/**
+	 * Order processor
+	 */
+	@EJB
+	private OrderProcessor orderProcessor;
 
-    /**
-     * Item service
-     */
-    @EJB
-    private ItemService itemService;
+	/**
+	 * Item service
+	 */
+	@EJB
+	private ItemService itemService;
 
-    /**
-     * User service
-     */
-    @EJB
-    private UserService userService;
+	/**
+	 * User service
+	 */
+	@EJB
+	private UserService userService;
 
-    /**
-     * Test processing an order
-     */
-    @Test
-    public void testOrderProcessor() {
-        // set things up
-        Item item = new Item("Apple IIGS", new Date(), new Date(), 45.0f);
-        itemService.createItem(item);
-        Bidder bidder = new Bidder("John","Wesley Powell",1869l);
-        userService.createUser(bidder);
-        Long itemId = item.getItemId();
-        Long userId = bidder.getBidderId();
+	/**
+	 * Test processing an order
+	 */
+	@Test
+	public void testOrderProcessor() {
+		// set things up
+		Item item = new Item("Apple IIGS", new Date(), new Date(), 45.0f);
+		itemService.createItem(item);
+		Bidder bidder = new Bidder("John", "Wesley Powell", 1869l);
+		userService.createUser(bidder);
+		Long itemId = item.getItemId();
+		Long userId = bidder.getBidderId();
 
-        bidder = (Bidder)userService.getUser(userId);
+		bidder = (Bidder) userService.getUser(userId);
 
-        // Test item
-        item = itemService.getItem(itemId);
+		// Test item
+		item = itemService.getItem(itemId);
 
-        orderProcessor.setBidder(bidder);
-        orderProcessor.setItem(item);
+		orderProcessor.setBidder(bidder);
+		orderProcessor.setItem(item);
 
-        // Get the shipping history of the test bidder
-        List<Shipping> shippingChoices = orderProcessor.getShippingChoices();
-        Assert.assertNotNull(shippingChoices);
-        
-        // Choose the first one in the list
-        orderProcessor.setShipping(shippingChoices.get(0));
+		// Get the shipping history of the test bidder
+		List<Shipping> shippingChoices = orderProcessor.getShippingChoices();
+		Assert.assertNotNull(shippingChoices);
 
-        // Get the billing history of the test bidder
-        List<Billing> billingChoices = orderProcessor.getBillingChoices();
+		// Choose the first one in the list
+		orderProcessor.setShipping(shippingChoices.get(0));
 
-        // Choose the first one in the list
-        orderProcessor.setBilling(billingChoices.get(0));
+		// Get the billing history of the test bidder
+		List<Billing> billingChoices = orderProcessor.getBillingChoices();
 
-        // Finish the workflow and end the stateful session
-        orderProcessor.placeOrder();
-    }
+		// Choose the first one in the list
+		orderProcessor.setBilling(billingChoices.get(0));
+
+		// Finish the workflow and end the stateful session
+		orderProcessor.placeOrder();
+	}
 }

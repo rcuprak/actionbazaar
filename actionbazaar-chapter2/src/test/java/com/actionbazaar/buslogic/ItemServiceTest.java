@@ -30,16 +30,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.actionbazaar.persistence.Address;
-import com.actionbazaar.persistence.Bid;
-import com.actionbazaar.persistence.Bidder;
-import com.actionbazaar.persistence.Billing;
-import com.actionbazaar.persistence.Item;
-import com.actionbazaar.persistence.Order;
-import com.actionbazaar.persistence.OrderStatus;
-import com.actionbazaar.persistence.Shipping;
-import com.actionbazaar.persistence.User;
-import com.actionbazaar.web.BidManager;
+import com.actionbazaar.persistence.*;
 
 /**
  * This test verifies that items can be persisted and retrieved.
@@ -75,13 +66,11 @@ public class ItemServiceTest {
 						Order.class,
 						OrderStatus.class, 
 						Shipping.class, 
-						User.class,
-						// com.actionbazaar.web
-						BidManager.class)
+						User.class)
 				.addAsResource("test-persistence.xml", "META-INF/persistence.xml")
 				.addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
 				.addAsWebInfResource("jbossas-ds.xml");
-		// System.out.println(archive.toString(true));
+		//System.out.println(archive.toString(true));
 		return archive;
 	}
 

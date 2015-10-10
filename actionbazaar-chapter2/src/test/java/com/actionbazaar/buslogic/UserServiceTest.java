@@ -16,16 +16,15 @@
  */
 package com.actionbazaar.buslogic;
 
-import com.actionbazaar.persistence.Bid;
-import com.actionbazaar.persistence.Bidder;
-import com.actionbazaar.persistence.Item;
+import com.actionbazaar.persistence.*;
+
 import javax.ejb.EJB;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.Archive;
-import org.jboss.shrinkwrap.api.ArchivePaths;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.jboss.shrinkwrap.api.asset.EmptyAsset;
+import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -48,17 +47,29 @@ public class UserServiceTest {
      */
     @Deployment
     public static Archive<?> createDeployment() {
-        return ShrinkWrap.create(JavaArchive.class, "foo.jar")
-        				 .addClasses(OrderProcessor.class,
-					                 OrderProcessorBean.class,
-					                 UserService.class,
-					                 UserServiceBean.class,
-					                 ItemService.class,
-					                 ItemServiceBean.class, 
-					                 Bid.class, 
-					                 Bidder.class, 
-					                 Item.class)
-        				 .addAsManifestResource("test-persistence.xml", ArchivePaths.create("persistence.xml"));
+		return ShrinkWrap.create(WebArchive.class, "test.war")
+				.addClasses(
+						// com.actionbazaar.buslogic
+						BillingException.class,
+						OrderProcessor.class,
+						OrderProcessorBean.class,
+						ItemService.class,
+						ItemServiceBean.class,
+						UserService.class,
+						UserServiceBean.class,
+						// com.actionbazaar.persistence
+						Address.class, 
+						Bid.class, 
+						Bidder.class, 
+						Billing.class, 
+						Item.class, 
+						Order.class,
+						OrderStatus.class, 
+						Shipping.class, 
+						User.class)
+				.addAsResource("test-persistence.xml", "META-INF/persistence.xml")
+				.addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
+				.addAsWebInfResource("jbossas-ds.xml");
     }
 
     /**
