@@ -17,20 +17,29 @@
 package com.actionbazaar.buslogic;
 
 import java.util.Date;
+
+import javax.ejb.EJB;
+
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import com.actionbazaar.persistence.Bid;
-import com.actionbazaar.persistence.Bidder;
-import com.actionbazaar.persistence.Item;
-import javax.ejb.EJB;
 import org.jboss.shrinkwrap.api.Archive;
-import org.jboss.shrinkwrap.api.ArchivePaths;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
-import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import com.actionbazaar.persistence.Address;
+import com.actionbazaar.persistence.Bid;
+import com.actionbazaar.persistence.Bidder;
+import com.actionbazaar.persistence.Billing;
+import com.actionbazaar.persistence.Item;
+import com.actionbazaar.persistence.Order;
+import com.actionbazaar.persistence.OrderStatus;
+import com.actionbazaar.persistence.Shipping;
+import com.actionbazaar.persistence.User;
+import com.actionbazaar.web.BidManager;
 
 /**
  * This test verifies that items can be persisted and retrieved.
@@ -38,38 +47,52 @@ import org.junit.Assert;
 @RunWith(Arquillian.class)
 public class ItemServiceTest {
 
-    /**
-     * Entity manager
-     */
-    @EJB
-    private ItemService itemService;
+	/**
+	 * Entity manager
+	 */
+	@EJB
+	private ItemService itemService;
 
+	/**
+	 * Creates a deployment item.
+	 * 
+	 * @return ShrinkWrap
+	 */
+	@Deployment
+	public static Archive<?> createDeployment() {
+		Archive<?> archive = ShrinkWrap.create(WebArchive.class, "test.war")
+				.addClasses(
+						// com.actionbazaar.buslogic
+						BillingException.class, 
+						ItemService.class, 
+						ItemServiceBean.class,
+						// com.actionbazaar.persistence
+						Address.class, 
+						Bid.class, 
+						Bidder.class, 
+						Billing.class, 
+						Item.class, 
+						Order.class,
+						OrderStatus.class, 
+						Shipping.class, 
+						User.class,
+						// com.actionbazaar.web
+						BidManager.class)
+				.addAsResource("test-persistence.xml", "META-INF/persistence.xml")
+				.addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
+				.addAsWebInfResource("jbossas-ds.xml");
+		// System.out.println(archive.toString(true));
+		return archive;
+	}
 
-    /**
-     * Creates a deployment item.
-     * @return ShrinkWrap
-     */
-    @Deployment
-    public static Archive<?> createDeployment() {
-       return ShrinkWrap.create(JavaArchive.class, "foo.jar")
-        				 .addClasses(OrderProcessor.class,
-					                 OrderProcessorBean.class,
-					                 ItemService.class,
-					                 ItemServiceBean.class, 
-					                 Bid.class, 
-					                 Bidder.class, 
-					                 Item.class)
-        				 .addAsManifestResource("test-persistence.xml", ArchivePaths.create("persistence.xml"));
-    }
-
-    /**
-     * Test persistence of item
-     */
-    @Test
-    public void testItemPersistence() {
-        Item item = new Item("Apple IIGS", new Date(), new Date(), 45.0f);
-        itemService.createItem(item);
-        Assert.assertNotNull(item.getItemId());
-        itemService.getItem(item.getItemId());
-    }
+	/**
+	 * Test persistence of item
+	 */
+	@Test
+	public void testItemPersistence() {
+		Item item = new Item("Apple IIGS", new Date(), new Date(), 45.0f);
+		itemService.createItem(item);
+		Assert.assertNotNull(item.getItemId());
+		itemService.getItem(item.getItemId());
+	}
 }

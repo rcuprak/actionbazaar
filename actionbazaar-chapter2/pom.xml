@@ -51,7 +51,32 @@
 					</plugin>
 				</plugins>
 			</build>
-		</profile>	
+		</profile>
+		<profile>
+			<id>wildfly-remote</id>
+			<dependencies>
+			<dependency>
+				<groupId>org.jboss.spec</groupId>
+				<artifactId>jboss-javaee-7.0</artifactId>
+				<scope>provided</scope>
+				<type>pom</type>
+			</dependency>
+			<dependency>
+					<groupId>org.wildfly.arquillian</groupId>
+					<artifactId>wildfly-arquillian-container-remote</artifactId>
+				</dependency>
+			</dependencies>
+			<build>
+				<testResources>
+					<testResource>
+						<directory>src/test/resources</directory>
+					</testResource>
+					<testResource>
+						<directory>src/test/resources-wildfly-remote</directory>
+					</testResource>
+				</testResources>
+			</build>
+		</profile>
 	</profiles>
 </project>
 
