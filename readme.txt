@@ -35,17 +35,17 @@ General instructions to run the unit tests (using JUnit + Arquillian) unless
    2. Run WildFly server in standalone mode if not running.
    3. Execute the tests
    		cd [module]
-		mvn -P glassfish_remote test
+		mvn -P wildfly-remote clean test
 		
    To run in remote Glassfish server (tests run slow for some reason)
    1. Install Glassfish server if not installed.
    2. Run Glassfish server if not running.
    3. Execute the tests
    		cd [module]
-		mvn -P glassfish_remote test
+		mvn -P glassfish-remote clean test
 		   		
    To run in embedded Glassfish server (tests run at ok speed)
    1. Execute the tests
    		cd [module]
-		mvn -P glassfish_remote test		   		
+		mvn -P glassfish-embedded clean test		   		
  
