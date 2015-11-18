@@ -63,6 +63,7 @@ public class OrderProcessorTest {
 						User.class)
 				.addAsResource("test-persistence.xml", "META-INF/persistence.xml")
 				.addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
+				.addAsWebInfResource("glassfish-resources.xml")
 				.addAsWebInfResource("jbossas-ds.xml");
 	}
 	/**
