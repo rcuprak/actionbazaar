@@ -3,8 +3,9 @@ This is a code snapshot from https://code.google.com/p/action-bazaar/
 Kiran: Updating project structure and dependencies - Oct 2015.
 	Done:
 		actionbazaar-chapter1
-	Ongoing:
 		actionbazaar-chapter2/
+	Ongoing:
+		actionbazaar-chapter3/
 	ToDo: 
 		ActionBazaar/
 		actionbazaar-chapter10/
@@ -12,7 +13,6 @@ Kiran: Updating project structure and dependencies - Oct 2015.
 		actionbazaar-chapter12/
 		actionbazaar-chapter14/
 		actionbazaar-chapter15/
-		actionbazaar-chapter3/
 		actionbazaar-chapter4/
 		actionbazaar-chapter5/
 		actionbazaar-chapter6/
@@ -49,3 +49,6 @@ General instructions to run the unit tests (using JUnit + Arquillian) unless
    		cd [module]
 		mvn -P glassfish-embedded clean test		   		
  
+
+For Runtime Deployment where ever applicable, use the maven glassfish-remote 
+	profile to generate the war file.

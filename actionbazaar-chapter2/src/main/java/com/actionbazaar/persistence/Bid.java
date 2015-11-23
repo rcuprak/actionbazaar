@@ -31,8 +31,6 @@ import javax.persistence.Temporal;
 /**
  * Represents a bid on an item
  */
-@Named
-@RequestScoped
 @Entity
 @Table(name="BIDS")
 public class Bid {

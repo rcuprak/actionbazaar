@@ -18,6 +18,7 @@ import javax.inject.Named;
  * Bid Manager - handles the add bid form.
  */
 @Named
+@RequestScoped
 public class BidManager {
 
     @EJB
