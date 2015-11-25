@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <artifactId>ActionBazaar</artifactId>
-        <groupId>com.actionbazaar.chapter3</groupId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
-    <groupId>com.actionbazaar.chapter3</groupId>
-    <artifactId>ActionBazaar-web</artifactId>
-    <packaging>war</packaging>
+    <groupId>com.ejb3ia</groupId>
+    <artifactId>actionbazaar-chapter3-ejb</artifactId>
+    <packaging>ejb</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>ActionBazaar Web</name>
+    <name>Action Bazaar EJB (Chap 3)</name>
     <url>http://code.google.com/p/action-bazaar/</url>
     <repositories>
         <repository>
@@ -41,12 +37,6 @@
         </repository>
     </repositories>
     <dependencies>
-        <dependency>
-                    <groupId>com.sun.jersey</groupId>
-                    <artifactId>jersey-server</artifactId>
-                    <version>1.5</version>
-            <scope>provided</scope>
-                </dependency>
         <dependency>
             <groupId>org.jboss.spec.javax.annotation</groupId>
             <artifactId>jboss-annotations-api_1.1_spec</artifactId>
@@ -107,12 +97,6 @@
             <version>3.1</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>com.actionbazaar.chapter3</groupId>
-            <artifactId>ActionBazaar-ejb</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -121,17 +105,23 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.8</version>
                 <configuration>
-                    <argLine>-XX:MaxPermSize=256m -Xms512m -Xmx512m -XX:+UseConcMarkSweepGC -XX:+CMSPermGenSweepingEnabled -XX:+CMSClassUnloadingEnabled</argLine>
+                    <argLine>-XX:MaxPermSize=256m -Xms512m -Xmx512m -XX:+UseConcMarkSweepGC
+                        -XX:+CMSPermGenSweepingEnabled -XX:+CMSClassUnloadingEnabled
+                    </argLine>
                     <classpathDependencyExcludes>
-                        <classpathDependencyExcludes>org.jboss.spec.javax.annotation:jboss-annotations-api_1.1_spec</classpathDependencyExcludes>
-                        <classpathDependencyExcludes>org.jboss.spec.javax.ejb:jboss-ejb-api_3.1_spec</classpathDependencyExcludes>
+                        <classpathDependencyExcludes>org.jboss.spec.javax.annotation:jboss-annotations-api_1.1_spec
+                        </classpathDependencyExcludes>
+                        <classpathDependencyExcludes>org.jboss.spec.javax.ejb:jboss-ejb-api_3.1_spec
+                        </classpathDependencyExcludes>
                         <classpathDependencyExcludes>javax.enterprise:cdi-api</classpathDependencyExcludes>
                         <classpathDependencyExcludes>com.sun.faces:jsf-api</classpathDependencyExcludes>
                         <classpathDependencyExcludes>javax.validation:validation-api</classpathDependencyExcludes>
-                        <classpathDependencyExcludes>org.hibernate.javax.persistence:hibernate-jpa-2.0-api</classpathDependencyExcludes>
+                        <classpathDependencyExcludes>org.hibernate.javax.persistence:hibernate-jpa-2.0-api
+                        </classpathDependencyExcludes>
                     </classpathDependencyExcludes>
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -140,7 +130,9 @@
                     <source>1.6</source>
                     <target>1.6</target>
                     <compilerArguments>
-                        <bootclasspath>${settings.localRepository}/javax/javaee-endorsed-api/6.0/javaee-endorsed-api-6.0.jar${path.separator}${sun.boot.class.path}</bootclasspath>
+                        <bootclasspath>
+                            ${settings.localRepository}/javax/javaee-endorsed-api/6.0/javaee-endorsed-api-6.0.jar${path.separator}${sun.boot.class.path}
+                        </bootclasspath>
                     </compilerArguments>
                 </configuration>
                 <dependencies>
@@ -159,10 +151,15 @@
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ejb-plugin</artifactId>
+                <version>2.3</version>
+                <configuration>
+                    <ejbVersion>3.0</ejbVersion>
+                </configuration>
+            </plugin>
         </plugins>
-        <finalName>ActionBazaar-web</finalName>
+        <finalName>ActionBazaar-ejb</finalName>
     </build>
-    <properties>
-        <netbeans.hint.deploy.server>gfv3ee6</netbeans.hint.deploy.server>
-    </properties>
 </project>

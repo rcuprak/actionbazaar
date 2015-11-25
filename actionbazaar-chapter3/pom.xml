@@ -2,27 +2,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.ejb3ia</groupId>
-  <artifactId>ActionBazaar</artifactId>
+  <artifactId>actionbazaar-chapter3</artifactId>
   <packaging>pom</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>Action Bazaar Enterprise Application</name>
+  <name>Action Bazaar Enterprise Application (Chap 3)</name>
   <url>http://code.google.com/p/action-bazaar/</url>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
     <modules>
-    <module>ActionBazaar-ear</module>
-    <module>ActionBazaar-web</module>
-    <module>ActionBazaar-ejb</module>
-    <module>ActionBazaar-client</module>
+    <module>actionbazaar-chapter3-ear</module>
+    <module>actionbazaar-chapter3-web</module>
+    <module>actionbazaar-chapter3-ejb</module>
+    <module>actionbazaar-chapter3-client</module>
   </modules>
 </project>

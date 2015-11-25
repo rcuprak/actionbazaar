@@ -104,6 +104,7 @@
 	<modules>
 		<module>actionbazaar-chapter1</module>
 		<module>actionbazaar-chapter2</module>
+		<module>actionbazaar-chapter3</module>
 	</modules>
 	<build>
 		<plugins>
