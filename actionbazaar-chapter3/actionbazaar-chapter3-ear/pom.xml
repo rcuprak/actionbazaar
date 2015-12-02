@@ -20,6 +20,27 @@
 					<fileNameMapping>no-version</fileNameMapping>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.glassfish.maven.plugin</groupId>
+				<artifactId>maven-glassfish-plugin</artifactId>
+				<configuration>
+					<glassfishDirectory>${glassfish.home}</glassfishDirectory>
+					<user>${glassfish.adminUser}</user>
+					<adminPassword>${glassfish.adminPassword}</adminPassword>
+					<!-- <passwordFile>/tmp/temp.txt</passwordFile> -->
+					<domain>
+						<name>domain1</name>
+						<httpPort>8080</httpPort>
+						<adminPort>4848</adminPort>
+					</domain>
+					<components>
+						<component>
+							<name>${project.artifactId}</name>
+							<artifact>target/${project.build.finalName}.ear</artifact>
+						</component>
+					</components>
+				</configuration>
+			</plugin>
 		</plugins>
 		<finalName>actionbazaar-chapter3-ear</finalName>
 	</build>
@@ -43,4 +64,5 @@
 			<type>jar</type>
 		</dependency>
 	</dependencies>
+
 </project>

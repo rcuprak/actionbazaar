@@ -12,9 +12,9 @@
 		<version>DYNAMIC-SNAPSHOT</version>
 	</parent>
 	<modules>
-		<module>actionbazaar-chapter3-ear</module>
-		<module>actionbazaar-chapter3-web</module>
 		<module>actionbazaar-chapter3-ejb</module>
+		<module>actionbazaar-chapter3-web</module>
 		<module>actionbazaar-chapter3-client</module>
+		<module>actionbazaar-chapter3-ear</module>
 	</modules>
 </project>
