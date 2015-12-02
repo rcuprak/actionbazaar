@@ -40,7 +40,7 @@ public class BidderAccountCreatorBean implements BidderAccountCreator {
     /**
      * Creates a data source
      */
-    @Resource(name = "java:module/jdbc/ActionBazaarDS")
+    @Resource(name = "java:app/jdbc/ActionBazaarDS")
     private DataSource dataSource;
 
     /**
