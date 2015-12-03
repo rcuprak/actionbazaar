@@ -27,7 +27,45 @@ All of the chapters are Maven based. The code samples were tested on the
    imported in IDEs supporting Maven. Eclipse was used for updating project 
    structure and dependencies in Oct 2015.
 
-See the respective <module>/readme.txt for instructions
-Note: You may need to add a maven profile in your $HOME/.m2/settings.xml for
-	your glassfish configurations. Just google for instructions.
+See the respective <module>/readme.txt for instructions to run the examples.
+
+Note: 
+	1. Run this command to install root pom.xml
+		mvn -pl actionbazaar -N install
+		
+	2. DONT run any  "mvn" command on the root project - actionbazaar - other 
+		than the one give above. Go to the individual chapter modules and 
+		following the instructions in the respective readme files.
+		  
+	2. You may need to add a maven profile in your $HOME/.m2/settings.xml for
+		your glassfish configurations. Just google for instructions.
+		----------------------snippet begin---------------------
+		<profiles>
+			---
+			<profile>
+					<id>env-dev</id>
+					<properties>
+										
+						<!-- glassfish configuration begin -->
+						<glassfish.home>C:/glassfish4/glassfish</glassfish.home>
+						<glassfish.adminUser>admin</glassfish.adminUser> 
+						<glassfish.adminPassword>asdfgh</glassfish.adminPassword> 
+						<glassfish.echo>false</glassfish.echo> 
+						<glassfish.terse>true</glassfish.terse> 
+						<glassfish.debug>false</glassfish.debug>						
+						<glassfish.appclient>${glassfish.home}/bin/appclient.bat</glassfish.appclient> <!-- windows -->
+						<!-- <glassfish.appclient>${glassfish.home}/bin/appclient</glassfish.appclient> --><!-- linux -->
+						<database.password>asdfasdf</database.password> 
+						<!-- glassfish configuration end -->					
+					</properties>
+		    </profile>	
+	    	---
+	    </profiles>
+	    ---
+	    <activeProfiles>
+	     	---
+			<activeProfile>env-dev</activeProfile>
+			---		    
+		</activeProfiles>	    
+	    -----------------------snippet end----------------------
 

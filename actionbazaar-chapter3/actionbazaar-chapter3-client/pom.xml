@@ -13,6 +13,20 @@
 	</parent>
     <build>
         <finalName>actionbazaar-chapter3-client</finalName>
+        <plugins>
+        	<plugin>
+        		<groupId>org.codehaus.mojo</groupId>
+        		<artifactId>exec-maven-plugin</artifactId>
+        		<configuration>
+        			<executable>${glassfish.appclient}</executable>
+        			<arguments>
+        				<argument>-classpath</argument>
+        				<classpath/>
+        				<argument>com.actionbazaar.client.AccountCreatorClient</argument>
+        			</arguments>
+        		</configuration>
+        	</plugin>
+        </plugins>
     </build>
     <dependencies>
         <dependency>
@@ -28,4 +42,5 @@
         	<type>pom</type>
         </dependency>
     </dependencies>
+    
 </project>
