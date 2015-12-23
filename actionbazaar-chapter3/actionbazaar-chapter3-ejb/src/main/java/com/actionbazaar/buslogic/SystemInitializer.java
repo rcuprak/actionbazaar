@@ -17,15 +17,16 @@
 package com.actionbazaar.buslogic;
 
 import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
 import javax.ejb.Asynchronous;
-import javax.ejb.PostActivate;
-import javax.ejb.PrePassivate;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
 import javax.sql.DataSource;
@@ -37,6 +38,11 @@ import javax.sql.DataSource;
 @Startup
 @Asynchronous
 public class SystemInitializer {
+	
+	/**
+     * Logger
+     */
+    private static final Logger logger = Logger.getLogger("SystemInitializer");
 	
     /**
      * Creates a data source
@@ -50,50 +56,68 @@ public class SystemInitializer {
      * Connection info
      */
     private Connection connection;
+
+	private final String createBiddersTable = "create table BIDDERS ("
+									+ "username varchar(10) PRIMARY KEY,"
+									+ "first_name varchar(30) NOT NULL,"
+									+ "credit_card_type varchar(20) NOT NULL"
+									+ ")";
+
+	private final String createBidsTable = "create table BIDS (" 
+									+ "BID_ID numeric(19) PRIMARY KEY,"
+									+ "BID_DATE DATE NOT NULL,"
+									+ "BID_STATUS varchar(20) NOT NULL,"
+									+ "BID_PRICE numeric(19,4) NOT NULL,"
+									+ "BID_ITEM_ID numeric(19) NOT NULL,"
+									+ "BID_BIDDER varchar(45) NOT NULL"
+									+ ")";
     
     @PostConstruct
     public void initDatabaseSchema() {
     	try {
-			connection = dataSource.getConnection();
-			Statement statement = connection.createStatement();
-			String createBiddersTable = "create table BIDDERS ("
-											+ "username varchar(10) PRIMARY KEY,"
-											+ "first_name varchar(30) NOT NULL,"
-											+ "credit_card_type varchar(20) NOT NULL"
-											+ ")";
+    		
+    		logger.info("*** creating database for ActionBazaar Application ***");
 			
-			String createBidsTable = "create table BIDS (" 
-											+ "BID_ID numeric(19) PRIMARY KEY,"
-											+ "BID_DATE DATE NOT NULL,"
-											+ "BID_STATUS varchar(20) NOT NULL,"
-											+ "BID_PRICE numeric(19,4) NOT NULL,"
-											+ "BID_ITEM_ID numeric(19) NOT NULL,"
-											+ "BID_BIDDER varchar(45) NOT NULL"
-											+ ")";
+    		connection = dataSource.getConnection();
+			DatabaseMetaData metaData = connection.getMetaData();
+			Statement statement = connection.createStatement();
 
-			statement.execute(createBiddersTable);
-			statement.execute(createBidsTable);
+			ResultSet rs = metaData.getTables(null, "APP", "BIDDERS", null);
+			if (rs.next()) { 
+				// The table exists.
+				// Since this is a study/test application, 
+				// we cleanup all pre-existing data if any. 
+				statement.execute("delete from BIDDERS");
+			} else {
+				statement.execute(createBiddersTable);
+			}
+			
+			rs = metaData.getTables(null, "APP", "BIDS", null);
+			if (rs.next()) { 
+				// The table exists.
+				// Since this is a study/test application, 
+				// we cleanup all pre-existing data if any. 
+				statement.execute("delete from BIDS");
+			} else {
+				statement.execute(createBidsTable);
+			}
 			statement.close();
-			connection.close();
+			
+			//connection.close();
+			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    }
-    
-    @PostActivate
-    public void openConnection() {
-    	System.out.println("*** System Initializer PostActivate. ***");
-    }
-    
-    @PrePassivate
-    public void closeConnection() {
-    	System.out.println("*** System Initializer Pre-Passivate. ***");
+    	
+    	
     }
     
     @PreDestroy
     public void cleanup() {
+    	logger.info("*** Application shutting down. Dropping tables ***");
         try {
+            // there is a bug that causes the next statement to crash
+            // https://java.net/jira/browse/GLASSFISH-21476
         	connection = dataSource.getConnection();
         	
         	// Since this is just a sample application, 
@@ -102,8 +126,8 @@ public class SystemInitializer {
         	Statement statement = connection.createStatement();
         	statement.execute("drop table BIDDERS");
         	statement.execute("drop table BIDS");
-        	statement.close();
-        	
+
+        	logger.info("*** Dropped tables BIDDERS and BIDS ***");
             connection.close();
             connection = null;
         } catch (SQLException sqle) {

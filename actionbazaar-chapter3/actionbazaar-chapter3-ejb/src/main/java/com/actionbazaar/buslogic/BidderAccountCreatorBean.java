@@ -22,6 +22,8 @@ import com.actionbazaar.persistence.LoginInfo;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Logger;
+
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
@@ -36,9 +38,14 @@ import javax.sql.DataSource;
  */
 @Stateful(name = "BidderAccountCreator")
 public class BidderAccountCreatorBean implements BidderAccountCreator {
+	
+	/**
+     * Logger
+     */
+    private static final Logger logger = Logger.getLogger("BidderAccountCreator");
 
     /**
-     * Creates a data source
+     * Creates a data source. see {@code com.actionbazaar.buslogic.SystemInitializer}
      */
     @Resource(name = "java:app/jdbc/ActionBazaarDS")
     private DataSource dataSource;
@@ -146,6 +153,9 @@ public class BidderAccountCreatorBean implements BidderAccountCreator {
     @Remove
     public void createAccount() {
         try {
+        	
+        	logger.info(()->"Creating account for username : " + loginInfo.getUsername() 
+        						+ ", firstname : " + biographicalInfo.getFirstName());
             Statement statement = connection.createStatement();
             String sql = "INSERT INTO BIDDERS(" + "username, " + "first_name, "
                     + "credit_card_type" + ") VALUES (" + "'"
