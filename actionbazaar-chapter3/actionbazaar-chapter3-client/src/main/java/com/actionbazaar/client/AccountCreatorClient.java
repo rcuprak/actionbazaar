@@ -16,10 +16,14 @@
  */
 package com.actionbazaar.client;
 
+import com.actionbazaar.buslogic.BidManagerRemote;
 import com.actionbazaar.buslogic.BidderAccountCreator;
 import com.actionbazaar.persistence.BillingInfo;
 import com.actionbazaar.persistence.BiographicalInfo;
 import com.actionbazaar.persistence.LoginInfo;
+
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.swing.JFrame;
 
@@ -33,6 +37,9 @@ public class AccountCreatorClient extends JFrame {
      */
     @EJB
     private static BidderAccountCreator accountCreator;
+
+    @EJB
+    private static BidManagerRemote  bidManager;
 
     /**
      * Creates a new AccountCreatorClient
@@ -63,5 +70,9 @@ public class AccountCreatorClient extends JFrame {
 
         // Create account
         accountCreator.createAccount();
+
+        // verify that the account got created.
+        List<List<String>> bidders = bidManager.getBidders();
+        bidders.forEach(System.out::println);
     }
 }

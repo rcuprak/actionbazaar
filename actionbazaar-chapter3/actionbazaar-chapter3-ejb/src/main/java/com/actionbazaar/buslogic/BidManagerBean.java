@@ -16,13 +16,22 @@
  */
 package com.actionbazaar.buslogic;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
 import javax.jws.WebService;
+import javax.sql.DataSource;
+
 import com.actionbazaar.persistence.Bid;
 import com.actionbazaar.persistence.Item;
 
@@ -38,13 +47,26 @@ public class BidManagerBean implements BidManager, BidManagerRemote, BidManagerW
      */
     @Resource
     private SessionContext sc;
+    
+    /**
+     * Creates a data source. see {@code com.actionbazaar.buslogic.SystemInitializer}
+     */
+    @Resource(name = "java:app/jdbc/ActionBazaarDS")
+    private DataSource dataSource;
+    
+    private Connection connection;
 
     /**
      * Initializes the BidManager
      */
     @PostConstruct
     public void initialize() {
-
+        try {
+            connection = dataSource.getConnection();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -86,7 +108,13 @@ public class BidManagerBean implements BidManager, BidManagerRemote, BidManagerW
      */
     @PreDestroy
     public void cleanup() {
-
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        connection = null;
     }
     /**
      * Returns the bid
@@ -98,4 +126,30 @@ public class BidManagerBean implements BidManager, BidManagerRemote, BidManagerW
         Bid bid = new Bid();
         return "Hello World";
     }
+
+    /* (non-Javadoc)
+     * @see com.actionbazaar.buslogic.BidManager#getBidders()
+     */
+    @Override
+    public List<List<String>> getBidders() {
+        List<List<String>> result = new LinkedList<>();
+        try {
+            Statement statement= connection.createStatement();
+            ResultSet rs = statement.executeQuery("select * from BIDDERS");
+            while (rs.next()) {
+                ArrayList<String> Bidder = new ArrayList<>(3);
+                Bidder.add(rs.getString(1));
+                Bidder.add(rs.getString(2));
+                Bidder.add(rs.getString(3));
+                result.add(Bidder);
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        
+        return result;
+    }
+    
+    
 }

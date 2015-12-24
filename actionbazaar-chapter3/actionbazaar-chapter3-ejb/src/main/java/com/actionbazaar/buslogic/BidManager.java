@@ -19,7 +19,6 @@ package com.actionbazaar.buslogic;
 import com.actionbazaar.persistence.Bid;
 import com.actionbazaar.persistence.Item;
 import java.util.List;
-import javax.ejb.Remote;
 
 /**
  * Remote interface for BidManager
@@ -52,5 +51,11 @@ public interface BidManager {
      * @return Bid
      */
     String getBid(long bidId);
+    
+    /**
+     * Returns Info about Bidders
+     * @return
+     */
+    List<List<String>> getBidders();
 
 }
