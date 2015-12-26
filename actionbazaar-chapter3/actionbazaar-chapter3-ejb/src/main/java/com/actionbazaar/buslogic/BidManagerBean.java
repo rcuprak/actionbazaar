@@ -39,8 +39,8 @@ import com.actionbazaar.persistence.Item;
  * Manages bids
  */
 @Stateless(name = "BidManager")
-@WebService
-public class BidManagerBean implements BidManager, BidManagerRemote, BidManagerWS {
+@WebService(endpointInterface="com.actionbazaar.buslogic.BidManagerWS")
+public class BidManagerBean implements BidManager, BidManagerRemote {
 
     /**
      * Sessions context

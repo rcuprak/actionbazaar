@@ -16,6 +16,8 @@
  */
 package com.actionbazaar.buslogic;
 
+import java.util.List;
+
 import javax.ejb.Remote;
 
 /**
@@ -23,5 +25,11 @@ import javax.ejb.Remote;
  */
 @Remote
 public interface BidManagerRemote extends BidManager {
+    
+    /**
+     * Returns Info about Bidders
+     * @return
+     */
+    List<List<String>> getBidders();
 
 }

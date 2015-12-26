@@ -52,10 +52,4 @@ public interface BidManager {
      */
     String getBid(long bidId);
     
-    /**
-     * Returns Info about Bidders
-     * @return
-     */
-    List<List<String>> getBidders();
-
 }
