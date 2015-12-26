@@ -129,6 +129,7 @@ public class BidderAccountCreatorBean implements BidderAccountCreator {
     @PrePassivate
     @PreDestroy
     public void cleanup() {
+        logger.info("BidderAccountCreatorBean: Cleaning up,");;
         try {
             connection.close();
             connection = null;
