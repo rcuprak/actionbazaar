@@ -57,6 +57,10 @@ Instructions
 		     -cp gf-client.jar:actionbazaar-chapter3-ejb.jar:actionbazaar-chapter3-client.jar \
 		     com.actionbazaar.client.StandAloneAccountCreatorClient
 		-----------------------------------------------
-	But we use maven to simplify resolving the classpath/dependencies and avoid using java directly
+	But we use maven to simplify resolving the classpath/dependencies and avoid using java directly.
+	
+	If the glassfish server runs on a different machine that the client, you may need to create an 
+	ORB listener(aka IIOP listener) for the given network address and port. For more details 
+	check https://glassfish.java.net/docs/4.0/administration-guide.pdf	 
 	
 	
