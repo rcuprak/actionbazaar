@@ -40,5 +40,23 @@ Instructions
 	mvn -pl actionbazaar-chapter3-ear -am clean install 
 2. deploy
 	mvn -pl actionbazaar-chapter3-ear glassfish:deploy
-3. run client
-	mvn -pl actionbazaar-chapter3-client exec:exec
+3. run client as an application client
+	mvn -pl actionbazaar-chapter3-client -P application exec:exec
+	
+4. run as standalone client
+	-----------------------------------
+	cd actionbazaar-chapter3-client; \
+	MAVEN_OPTS="-Dorg.omg.CORBA.ORBInitialHost=localhost -Dorg.omg.CORBA.ORBInitialPort=3700"; \
+	mvn -P standalone exec:java -Dexec.mainClass="com.actionbazaar.client.StandAloneAccountCreatorClient" 
+	-----------------------------------
+	
+	This is equivalent to
+		----------------------------------------------- 
+		java -Dorg.omg.CORBA.ORBInitialHost=localhost \
+		     -Dorg.omg.CORBA.ORBInitialPort=3700 \
+		     -cp gf-client.jar:actionbazaar-chapter3-ejb.jar:actionbazaar-chapter3-client.jar \
+		     com.actionbazaar.client.StandAloneAccountCreatorClient
+		-----------------------------------------------
+	But we use maven to simplify resolving the classpath/dependencies and avoid using java directly
+	
+	

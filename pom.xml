@@ -91,6 +91,15 @@
 				<scope>test</scope>
 			</dependency>
 			<!-- end: dependencies to test in glassfish remote environment -->
+			<!-- start: glassfish dependencies to run remote standalone clients -->
+			<dependency>
+				<groupId>org.glassfish.main.appclient</groupId>
+				<artifactId>gf-client</artifactId>
+				<version>4.1.1</version>
+				<scope>runtime</scope>
+				<type>pom</type>
+			</dependency>
+			<!-- end: glassfish dependencies to run remote standalone clients -->
 			<!-- start: dependencies to test in wildfly appserver remotely -->
 			<dependency>
 				<groupId>org.wildfly.arquillian</groupId>
