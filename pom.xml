@@ -11,6 +11,12 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+	<modules>
+		<module>actionbazaar-chapter1</module>
+		<module>actionbazaar-chapter2</module>
+		<module>actionbazaar-chapter3</module>
+		<module>actionbazaar-chapter4</module>
+	</modules>
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -37,6 +43,12 @@
 				<version>1.1.9.Final</version>
 				<type>pom</type>
 				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>javax</groupId>
+				<artifactId>javaee-api</artifactId>
+				<version>7.0</version>
+				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.jboss.spec</groupId>
@@ -68,6 +80,18 @@
 				<artifactId>slf4j-simple</artifactId>
 				<version>1.7.12</version>
 				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.persistence</groupId>
+				<artifactId>eclipselink</artifactId>
+				<version>2.6.2</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.persistence</groupId>
+				<artifactId>org.eclipse.persistence.jpa.modelgen.processor</artifactId>
+				<version>2.6.2</version>
+				<scope>provided</scope>
 			</dependency>
 			<!-- start: dependencies to test in glassfish embedded environment -->
 			<dependency>
@@ -110,11 +134,6 @@
 			<!-- end: dependencies to test in wildfly appserver remotely -->
 		</dependencies>
 	</dependencyManagement>
-	<modules>
-		<module>actionbazaar-chapter1</module>
-		<module>actionbazaar-chapter2</module>
-		<module>actionbazaar-chapter3</module>
-	</modules>
 	<build>
 		<plugins>
 			<plugin>
@@ -154,13 +173,13 @@
 					<version>2.10.1</version>
 				</plugin>
 				<plugin>
-			        <groupId>org.apache.maven.plugins</groupId>
-			        <artifactId>maven-ejb-plugin</artifactId>
-			        <version>2.5.1</version>
-			        <configuration>
-			          <ejbVersion>3.1</ejbVersion>
-			        </configuration>
-      			</plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-ejb-plugin</artifactId>
+					<version>2.5.1</version>
+					<configuration>
+						<ejbVersion>3.1</ejbVersion>
+					</configuration>
+				</plugin>
 				<plugin>
 					<groupId>org.glassfish.maven.plugin</groupId>
 					<artifactId>maven-glassfish-plugin</artifactId>
