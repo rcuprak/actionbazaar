@@ -22,36 +22,31 @@ import javax.persistence.PersistenceContext;
  * @author <a href="mailto:mjremijan@yahoo.com">Michael Remijan</a>
  */
 @MessageDriven(activationConfig = {
-  @ActivationConfigProperty(propertyName = "destinationType", 
-    propertyValue = "javax.jms.Queue"),
-  @ActivationConfigProperty(propertyName = "destinationLookup", 
-    propertyValue = "jms/ShippingRequestQueue")
-})
-public class TurtleShippingRequestMessageBean
-  implements MessageListener {
+        @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
+        @ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "jms/ShippingRequestQueue") })
+public class TurtleShippingRequestMessageBean implements MessageListener {
 
-  @PersistenceContext()
-  private EntityManager entityManager;
-  
-  @Override
-  public void onMessage(Message message) {
-    try {
-      ObjectMessage om = (ObjectMessage) message;
-      Object o = om.getObject();
-      ActionBazaarShippingRequest sr = (ActionBazaarShippingRequest) o;
-      Logger.getLogger(TurtleShippingRequestMessageBean.class.getName())
-        .log(Level.INFO, String.format("Got message: %s", sr));
-    
-      TurtleShippingRequest tr = new TurtleShippingRequest();      
-      tr.setInsuranceAmount(sr.getInsuranceAmount());
-      tr.setItem(sr.getItem());
-      tr.setShippingAddress(sr.getShippingAddress());
-      tr.setShippingMethod(sr.getShippingMethod());
-      entityManager.persist(tr);      
+    @PersistenceContext
+    private EntityManager entityManager;
 
-    } catch (JMSException ex) {
-      Logger.getLogger(TurtleShippingRequestMessageBean.class.getName())
-        .log(Level.SEVERE, null, ex);
+    @Override
+    public void onMessage(Message message) {
+        try {
+            ObjectMessage om = (ObjectMessage) message;
+            Object o = om.getObject();
+            ActionBazaarShippingRequest sr = (ActionBazaarShippingRequest) o;
+            Logger.getLogger(TurtleShippingRequestMessageBean.class.getName()).log(Level.INFO,
+                    String.format("Got message: %s", sr));
+
+            TurtleShippingRequest tr = new TurtleShippingRequest();
+            tr.setInsuranceAmount(sr.getInsuranceAmount());
+            tr.setItem(sr.getItem());
+            tr.setShippingAddress(sr.getShippingAddress());
+            tr.setShippingMethod(sr.getShippingMethod());
+            entityManager.persist(tr);
+
+        } catch (JMSException ex) {
+            Logger.getLogger(TurtleShippingRequestMessageBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-  }
 }

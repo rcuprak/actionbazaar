@@ -17,25 +17,23 @@ import javax.annotation.PreDestroy;
  * @author <a href="mailto:mjremijan@yahoo.com">Michael Remijan</a>
  */
 public class MessageBeanLifecycleMethods {
-  PrintWriter printWriter;
-  
-  @PostConstruct
-  void createPrintWriter() {   
-    File f = new File(new File(System.getProperty("java.io.tmpdir"))
-      , "ShippingMessages.txt");    
-    try {
-      printWriter = new PrintWriter(f);
-    } catch (Throwable t) {
-      throw new RuntimeException(t);
+    PrintWriter printWriter;
+
+    @PostConstruct
+    void createPrintWriter() {
+        File f = new File(new File(System.getProperty("java.io.tmpdir")), "ShippingMessages.txt");
+        try {
+            printWriter = new PrintWriter(f);
+        } catch (Throwable t) {
+            throw new RuntimeException(t);
+        }
+        Logger.getLogger(TurtleShippingRequestMessageBean.class.getName()).log(Level.INFO,
+                String.format("Write to file: %s", f.getAbsolutePath()));
     }
-    Logger.getLogger(TurtleShippingRequestMessageBean.class.getName())
-      .log(Level.INFO, 
-      String.format("Write to file: %s", f.getAbsolutePath()));
-  }
-  
-  @PreDestroy
-  void closePrintWriter() {
-    printWriter.flush();
-    printWriter.close();
-  }
+
+    @PreDestroy
+    void closePrintWriter() {
+        printWriter.flush();
+        printWriter.close();
+    }
 }

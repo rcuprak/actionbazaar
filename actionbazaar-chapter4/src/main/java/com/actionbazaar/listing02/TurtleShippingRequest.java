@@ -20,7 +20,7 @@ import javax.persistence.Table;
  * @author <a href="mailto:mjremijan@yahoo.com">Michael Remijan</a>
  */
 @Entity
-@Table(name="SHIPPING_REQUEST")
+@Table(name = "SHIPPING_REQUEST")
 public class TurtleShippingRequest implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -29,13 +29,13 @@ public class TurtleShippingRequest implements Serializable {
 
     @Column(name = "ITEM_ID")
     private String item;
-    @Column(name = "SHIP_ADDRESS")    
+    @Column(name = "SHIP_ADDRESS")
     private String shippingAddress;
     @Column(name = "SHIP_METHOD")
     private String shippingMethod;
     @Column(name = "SHIP_INSURANCE_DOLLARS")
     private double insuranceAmount;
-  
+
     public Long getId() {
         return id;
     }
@@ -44,37 +44,36 @@ public class TurtleShippingRequest implements Serializable {
         this.id = id;
     }
 
-  
     public String getItem() {
-      return item;
+        return item;
     }
 
     public void setItem(String item) {
-      this.item = item;
+        this.item = item;
     }
 
     public String getShippingAddress() {
-      return shippingAddress;
+        return shippingAddress;
     }
 
     public void setShippingAddress(String shippingAddress) {
-      this.shippingAddress = shippingAddress;
+        this.shippingAddress = shippingAddress;
     }
 
     public String getShippingMethod() {
-      return shippingMethod;
+        return shippingMethod;
     }
 
     public void setShippingMethod(String shippingMethod) {
-      this.shippingMethod = shippingMethod;
+        this.shippingMethod = shippingMethod;
     }
 
     public double getInsuranceAmount() {
-      return insuranceAmount;
+        return insuranceAmount;
     }
 
     public void setInsuranceAmount(double insuranceAmount) {
-      this.insuranceAmount = insuranceAmount;
+        this.insuranceAmount = insuranceAmount;
     }
 
     @Override
@@ -101,6 +100,11 @@ public class TurtleShippingRequest implements Serializable {
 
     @Override
     public String toString() {
-        return "TurtleShippingRequest{" + "id=" + id + ", item=" + item + ", shippingAddress=" + shippingAddress + ", shippingMethod=" + shippingMethod + ", insuranceAmount=" + insuranceAmount + '}';
+        return "TurtleShippingRequest{" + "id=" + id + 
+                ", item=" + item + 
+                ", shippingAddress=" + shippingAddress + 
+                ", shippingMethod=" + shippingMethod + 
+                ", insuranceAmount=" + insuranceAmount + 
+                '}';
     }
 }
