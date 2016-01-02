@@ -28,10 +28,10 @@ import javax.servlet.http.HttpServletResponse;
 public class ActionBazaarShippingRequestServlet extends HttpServlet {
 
     @Inject
-    @JMSConnectionFactory("jms/QueueConnectionFactory")
+    @JMSConnectionFactory("java:app/jms/QueueConnectionFactory")
     private JMSContext context;
 
-    @Resource(name = "jms/ShippingRequestQueue")
+    @Resource(name = "java:app/jms/ShippingRequestQueue")
     private Destination destination;
 
     /**

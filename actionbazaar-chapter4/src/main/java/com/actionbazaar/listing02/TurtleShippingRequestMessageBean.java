@@ -23,7 +23,7 @@ import javax.persistence.PersistenceContext;
  */
 @MessageDriven(activationConfig = {
         @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
-        @ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "jms/ShippingRequestQueue") })
+        @ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "java:app/jms/ShippingRequestQueue") })
 public class TurtleShippingRequestMessageBean implements MessageListener {
 
     @PersistenceContext
