@@ -12,6 +12,7 @@ import javax.inject.Inject;
 import javax.jms.Destination;
 import javax.jms.JMSConnectionFactory;
 import javax.jms.JMSContext;
+import javax.jms.JMSException;
 import javax.jms.JMSProducer;
 import javax.jms.ObjectMessage;
 import javax.servlet.ServletException;
@@ -41,47 +42,63 @@ public class ActionBazaarShippingRequestServlet extends HttpServlet {
 
         Throwable oops = null;
         try {
-            ActionBazaarShippingRequest shippingRequest = new ActionBazaarShippingRequest();
-            shippingRequest.setItem("item");
-            shippingRequest.setShippingAddress("address");
-            shippingRequest.setShippingMethod("method");
-            shippingRequest.setInsuranceAmount(100.50);
-
-            ObjectMessage om = context.createObjectMessage();
-            om.setObject(shippingRequest);
-
-            JMSProducer producer = context.createProducer();
-            producer.send(destination, om);
-
-        } catch (Throwable t) {
-            oops = t;
+            sendShippingRequest(request);
+        } catch (JMSException e) {
+            // TODO Auto-generated catch block
+            oops = e;
         }
 
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        try {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet SendMessageServlet</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet SendMessageServlet at " + request.getContextPath() + "</h1>");
-            out.println("<p>Time:  " + String.valueOf(new Date()) + "</p>");
-            if (oops != null) {
+        if (oops == null) {
+            
+            response.sendRedirect("PendingShippingRequests.jsp");
+
+        } else {
+            response.setContentType("text/html;charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            try {
+                /*
+                 * TODO output your page here. You may use following sample
+                 * code.
+                 */
+                out.println("<!DOCTYPE html>");
+                out.println("<html>");
+                out.println("<head>");
+                out.println("<title>Servlet SendMessageServlet</title>");
+                out.println("</head>");
+                out.println("<body>");
+                out.println("<h1>Servlet SendMessageServlet at " + request.getContextPath() + "</h1>");
+                out.println("<p>Time:  " + String.valueOf(new Date()) + "</p>");
                 out.println("<p>Opps:</p>");
                 out.println("<xmp>");
                 oops.printStackTrace(out);
                 out.println("</xmp>");
-            } else {
-                out.println("<p>Should be OK</p>");
+                out.println("</body>");
+                out.println("</html>");
+            } finally {
+                out.close();
             }
-            out.println("</body>");
-            out.println("</html>");
-        } finally {
-            out.close();
         }
+    }
+
+    /**
+     * @param request
+     * @return
+     * @throws JMSException
+     */
+    private void sendShippingRequest(HttpServletRequest request) throws JMSException {
+
+        ActionBazaarShippingRequest shippingRequest = new ActionBazaarShippingRequest();
+        shippingRequest.setItem(request.getParameter("Item"));
+        shippingRequest.setShippingAddress(request.getParameter("ShippingAddress"));
+        shippingRequest.setShippingMethod(request.getParameter("ShippingMethod"));
+        shippingRequest.setInsuranceAmount(Double.parseDouble(request.getParameter("InsuranceAmount")));
+
+        ObjectMessage om = context.createObjectMessage();
+        om.setObject(shippingRequest);
+
+        JMSProducer producer = context.createProducer();
+        producer.send(destination, om);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on
