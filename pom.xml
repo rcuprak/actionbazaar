@@ -16,6 +16,7 @@
 		<module>actionbazaar-chapter2</module>
 		<module>actionbazaar-chapter3</module>
 		<module>actionbazaar-chapter4</module>
+		<module>actionbazaar-chapter5</module>
 	</modules>
 	<dependencies>
 		<dependency>

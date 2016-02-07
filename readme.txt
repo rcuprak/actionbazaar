@@ -5,7 +5,9 @@ Kiran: Updating project structure and dependencies - Oct 2015.
 		actionbazaar-chapter1
 		actionbazaar-chapter2/
 		actionbazaar-chapter3/
+		actionbazaar-chapter4/
 	Ongoing:
+		actionbazaar-chapter5/
 	ToDo: 
 		ActionBazaar/
 		actionbazaar-chapter10/
@@ -13,8 +15,6 @@ Kiran: Updating project structure and dependencies - Oct 2015.
 		actionbazaar-chapter12/
 		actionbazaar-chapter14/
 		actionbazaar-chapter15/
-		actionbazaar-chapter4/
-		actionbazaar-chapter5/
 		actionbazaar-chapter6/
 		actionbazaar-chapter7/
 		actionbazaar-chapter8/
