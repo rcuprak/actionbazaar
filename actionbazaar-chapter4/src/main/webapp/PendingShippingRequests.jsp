@@ -12,6 +12,7 @@
 <title>Pending Shipping Request</title>
 </head>
 <body>
+	Turtel Shipping Company:<br>
 	The following requests are awaiting action:
 	<br>
 	<%
