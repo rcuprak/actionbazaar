@@ -24,7 +24,7 @@
 	<div align="center">
 		<table border="1" cellpadding="5">
 			<caption>
-				<h2>Pending Requests</h2>
+				<font size="5"><b>Pending Requests</b></font>
 			</caption>
 			<tr>
 				<th>Id</th>

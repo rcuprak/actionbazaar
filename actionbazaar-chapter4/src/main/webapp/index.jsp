@@ -9,10 +9,10 @@
 <body>	
 	Fill the form below and submit to send a MDB to Turtle Shipping Company 
 	<form method="post" action="ActionBazaarShippingRequestServlet">
-		<pre>Item             <input name="Item"/><br>
-		<pre>Shipping Address <input name="ShippingAddress"/><br>
-		<pre>Shipping Method  <input name="ShippingMethod"/><br>
-		<pre>Insurance Amount <input name="InsuranceAmount"/><br>
+		<pre>Item             <input name="Item"/></pre><br>
+		<pre>Shipping Address <input name="ShippingAddress"/></pre><br>
+		<pre>Shipping Method  <input name="ShippingMethod"/></pre><br>
+		<pre>Insurance Amount <input name="InsuranceAmount"/></pre><br>
 		<input type="submit"><br>
 	</form>
 
