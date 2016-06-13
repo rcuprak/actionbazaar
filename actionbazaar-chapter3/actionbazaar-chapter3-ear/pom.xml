@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>actionbazaar-chapter3-ear</artifactId>
+	<packaging>ear</packaging>
+	<name>Action Bazaar EAR (Chap 3)</name>
+	<url>http://code.google.com/p/action-bazaar/</url>
+	<parent>
+		<groupId>com.ejb3ia</groupId>
+		<artifactId>actionbazaar-chapter3</artifactId>
+		<version>DYNAMIC-SNAPSHOT</version>
+	</parent>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<configuration>
+					<fileNameMapping>no-version</fileNameMapping>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.glassfish.maven.plugin</groupId>
+				<artifactId>maven-glassfish-plugin</artifactId>
+				<configuration>
+					<glassfishDirectory>${glassfish.home}</glassfishDirectory>
+					<user>${glassfish.adminUser}</user>
+					<adminPassword>${glassfish.adminPassword}</adminPassword>
+					<!-- <passwordFile>/tmp/temp.txt</passwordFile> -->
+					<domain>
+						<name>domain1</name>
+						<httpPort>8080</httpPort>
+						<adminPort>4848</adminPort>
+					</domain>
+					<components>
+						<component>
+							<name>${project.artifactId}</name>
+							<artifact>target/${project.build.finalName}.ear</artifact>
+						</component>
+					</components>
+				</configuration>
+			</plugin>
+		</plugins>
+		<finalName>actionbazaar-chapter3-ear</finalName>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>com.ejb3ia</groupId>
+			<artifactId>actionbazaar-chapter3-ejb</artifactId>
+			<version>DYNAMIC-SNAPSHOT</version>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>com.ejb3ia</groupId>
+			<artifactId>actionbazaar-chapter3-web</artifactId>
+			<version>DYNAMIC-SNAPSHOT</version>
+			<type>war</type>
+		</dependency>
+		<dependency>
+			<groupId>com.ejb3ia</groupId>
+			<artifactId>actionbazaar-chapter3-client</artifactId>
+			<version>DYNAMIC-SNAPSHOT</version>
+			<type>jar</type>
+		</dependency>
+	</dependencies>
+
+</project>

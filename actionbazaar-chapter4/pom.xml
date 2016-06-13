@@ -1,0 +1,74 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>actionbazaar-chapter4</artifactId>
+	<packaging>war</packaging>
+	<name>Action Bazaar Enterprise Application (Chap 4)</name>
+	<parent>
+		<groupId>com.ejb3ia</groupId>
+		<artifactId>actionbazaar</artifactId>
+		<version>DYNAMIC-SNAPSHOT</version>
+	</parent>
+
+	<properties>
+		<endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<netbeans.hint.deploy.server>gfv3ee6</netbeans.hint.deploy.server>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>eclipselink</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>org.eclipse.persistence.jpa.modelgen.processor</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.glassfish.maven.plugin</groupId>
+				<artifactId>maven-glassfish-plugin</artifactId>
+				<configuration>
+					<glassfishDirectory>${glassfish.home}</glassfishDirectory>
+					<user>${glassfish.adminUser}</user>
+					<adminPassword>${glassfish.adminPassword}</adminPassword>
+					<!-- <passwordFile>/tmp/temp.txt</passwordFile> -->
+					<domain>
+						<name>domain1</name>
+						<httpPort>8080</httpPort>
+						<adminPort>4848</adminPort>
+					</domain>
+					<components>
+						<component>
+							<name>${project.artifactId}</name>
+							<artifact>target/${project.build.finalName}.war</artifact>
+						</component>
+					</components>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

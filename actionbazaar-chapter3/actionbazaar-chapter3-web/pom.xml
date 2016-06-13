@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>actionbazaar-chapter3-web</artifactId>
+	<packaging>war</packaging>
+	<name>Action Bazaar Web (Chap 3)</name>
+	<url>http://code.google.com/p/action-bazaar/</url>
+	<parent>
+		<groupId>com.ejb3ia</groupId>
+		<artifactId>actionbazaar-chapter3</artifactId>
+		<version>DYNAMIC-SNAPSHOT</version>
+	</parent>
+	<dependencies>
+		<dependency>
+			<groupId>org.jboss.spec</groupId>
+			<artifactId>jboss-javaee-7.0</artifactId>
+			<type>pom</type>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.enterprise</groupId>
+			<artifactId>cdi-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.ejb3ia</groupId>
+			<artifactId>actionbazaar-chapter3-ejb</artifactId>
+			<version>DYNAMIC-SNAPSHOT</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+	<build>
+		<finalName>actionbazaar-chapter3-web</finalName>
+	</build>
+</project>
