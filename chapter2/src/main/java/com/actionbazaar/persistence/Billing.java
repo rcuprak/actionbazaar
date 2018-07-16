@@ -89,7 +89,7 @@ public class Billing implements Serializable {
     }
 
     /**
-     * Returns the billing id
+     * Sets the billing id
      * @param billingId - billing id
      */
     public void setBillingId(Long billingId) {
